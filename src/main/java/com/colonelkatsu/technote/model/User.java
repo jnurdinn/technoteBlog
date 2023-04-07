@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-public class user {
+public class User {
   @Getter
   @Setter
   @Entity
