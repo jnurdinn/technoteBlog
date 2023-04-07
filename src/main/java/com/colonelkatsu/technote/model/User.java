@@ -10,24 +10,21 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
+@Entity
+@Table
 public class User {
-  @Getter
-  @Setter
-  @Entity
-  @Table
-  public class post {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Column
+  private String userName;
 
-    @Column
-    private String userName;
+  @Column
+  private String password;
 
-    @Column
-    private String password;
-
-    @Column
-    private Instant email;
-  }
+  @Column
+  private Instant email;
 }
