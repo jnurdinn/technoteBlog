@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### technotedb.trace ###
-*.trace
+*.trace.db
