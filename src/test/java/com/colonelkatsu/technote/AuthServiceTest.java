@@ -16,8 +16,8 @@ import com.colonelkatsu.technote.model.User;
 import com.colonelkatsu.technote.repository.UserRepository;
 import com.colonelkatsu.technote.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 
 @AutoConfigureMockMvc
 @SpringBootTest
