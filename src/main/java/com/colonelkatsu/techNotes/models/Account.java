@@ -1,35 +1,38 @@
 package com.colonelkatsu.techNotes.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Post {
-
+@NoArgsConstructor
+public class Account {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
-  private String title;
+  private String username;
 
-  @Column(columnDefinition = "TEXT")
-  private String body;
+  private String password;
+
+  private String firstname;
+
+  private String lastname;
+
+  private String emailAddress;
 
   private LocalDateTime createdAt;
 
-  private LocalDateTime updatedAt;
-
-  @ManyToOne
-  @JoinColumn(name= "account_id", referencedColumnName = "id", nullable = false)
-  private Account account;
+  @OneToMany(mappedBy = "account")
+  private List<Post> posts;
 }

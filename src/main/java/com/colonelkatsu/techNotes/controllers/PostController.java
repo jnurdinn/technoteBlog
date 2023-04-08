@@ -1,7 +1,5 @@
 package com.colonelkatsu.techNotes.controllers;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.colonelkatsu.techNotes.models.Post;
 import com.colonelkatsu.techNotes.services.PostService;
+import com.colonelkatsu.techNotes.utils.CommonUtil;
 
 @Controller
 public class PostController {
@@ -25,10 +24,7 @@ public class PostController {
     if(optionalPost.isPresent()) {
       Post post = optionalPost.get();
       model.addAttribute("post", post);
-
-      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-      String formattedDateTime = post.getCreatedAt().format(dateTimeFormatter);
-      model.addAttribute("createdAt", formattedDateTime);
+      model.addAttribute("createdAt", CommonUtil.datetimeFormatter(post.getCreatedAt()));
 
       return "post";
     }

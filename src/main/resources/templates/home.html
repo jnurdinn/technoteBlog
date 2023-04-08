@@ -16,12 +16,8 @@
 				<h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">
 					Title
 				</a></h2>
-				<h5 th:text="'Published on ' + ${post.createdAt}">
-					Created At
-				</h5>
-				<p th:text="${post.body}">
-					Body Text
-				</p>
+				<p th:text="${post.body}">Body Text</p>
+				<h5 th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">Post Info</h5>
 				<br />
 			</div>
 		</div>
