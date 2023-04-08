@@ -2,6 +2,7 @@ package com.colonelkatsu.technote;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,6 @@ import com.colonelkatsu.technote.model.User;
 import com.colonelkatsu.technote.repository.UserRepository;
 import com.colonelkatsu.technote.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @AutoConfigureMockMvc
 @SpringBootTest
