@@ -3,6 +3,10 @@ package com.colonelkatsu.technote.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.colonelkatsu.technote.entity.LoginEntity;
@@ -18,6 +22,9 @@ public class AuthService {
 
   @Autowired
   private PasswordEncoder passwordEncoder;
+
+  @Autowired
+  private AuthenticationManager authenticationManager;
 
   @SuppressWarnings("rawtypes")
   public ResponseEntity signup(RegisterEntity registerRequest) {
@@ -39,7 +46,9 @@ public class AuthService {
   }
 
   public void login(LoginEntity loginEntity) {
-
+    Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginEntity.getUsername()
+        , loginEntity.getPassword()));
+    SecurityContextHolder.getContext().setAuthentication(authenticate);
   }
 
 }
