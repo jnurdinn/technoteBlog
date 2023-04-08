@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1">
+<title>TechNote :: Register</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>
+			<a th:href="@{'/'}">TechNote : by ColonelKatsu</a>
+		</h1>
+		<hr />
+		<form action="#" th:action="@{/register}" th:object="${account}"
+			method="POST">
+			<div>
+				<label for="firstname">First Name</label> <input id="firstname"
+					type="text" th:field="*{firstname}" name="firstname"
+					placeholder="First Name" />
+			</div>
+			<div>
+				<label for="lastname">Last Name</label> <input id="lastname"
+					type="text" th:field="*{lastname}" name="lastname"
+					placeholder="Last Name" />
+			</div>
+			<div>
+				<label for="emailAddress">Email Address</label> <input
+					id="emailAddress" type="text" th:field="*{emailAddress}"
+					name="emailAddress" placeholder="Email Address" />
+			</div>
+			<div>
+				<label for="password">Password</label> <input id="password"
+					type="password" th:field="*{password}" name="password"
+					placeholder="Password" />
+			</div>
+			<div>
+				<label for="confirmpassword">Confirm Password</label> <input
+					id="confirmpassword" type="password" name="confirmpassword"
+					placeholder="Confirm Password" />
+			</div>
+			<button type="submit">Register</button>
+		</form>
+	</div>
+</body>
+</html>

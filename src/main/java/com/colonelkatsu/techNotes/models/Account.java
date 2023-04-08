@@ -2,7 +2,6 @@ package com.colonelkatsu.techNotes.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +19,6 @@ public class Account {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
-
-  private String username;
 
   private String password;
 
