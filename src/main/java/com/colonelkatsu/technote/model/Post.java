@@ -1,6 +1,7 @@
 package com.colonelkatsu.technote.model;
 
 import java.time.Instant;
+import org.springframework.stereotype.Component;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table
+@Component
 public class Post {
 
   @Id
