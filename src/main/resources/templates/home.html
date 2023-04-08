@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, intial-scale=1">
+	<title>TechNote :: Home</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1><a th:href="@{'/'}">TechNote : by ColonelKatsu</a></h1>
+		<hr />
+		<div class="posts-container">
+			<div class="post" th:each="post : ${posts}">
+				<h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">
+					Title
+				</a></h2>
+				<h5 th:text="'Published on ' + ${post.createdAt}">
+					Created At
+				</h5>
+				<p th:text="${post.body}">
+					Body Text
+				</p>
+				<br />
+			</div>
+		</div>
+	</div>
+</body>
