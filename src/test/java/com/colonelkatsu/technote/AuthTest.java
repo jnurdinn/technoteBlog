@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 @SpringBootTest
 @Transactional
-public class AuthServiceTest {
+public class AuthTest {
 
   @Mock
   AuthService authTestServiceMock;
