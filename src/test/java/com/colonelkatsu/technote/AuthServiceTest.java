@@ -18,7 +18,8 @@ import com.colonelkatsu.technote.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@AutoConfigureMockMvc(addFilters = false)
+
+@AutoConfigureMockMvc
 @SpringBootTest
 @Transactional
 public class AuthServiceTest {
@@ -41,18 +42,17 @@ public class AuthServiceTest {
   @Test
   public void createStudentHttpRequest() throws Exception {
 
-    user.setUserName("user1");
-    user.setPassword("12345678");
-    user.setEmail("user1@test.com");
+      user.setUserName("user1");
+      user.setPassword("12345678");
+      user.setEmail("user1@test.com");
 
-    mockMvc
-        .perform(post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(user)))
-        .andExpect(status().isOk());
+      mockMvc.perform(post("/api/auth/signup")
+              .contentType(MediaType.APPLICATION_JSON)
+              .content(objectMapper.writeValueAsString(user)))
+              .andExpect(status().isOk());
 
-    Optional<User> verifyUser = userRepository.findByUserName("user1");
-    assertNotNull(verifyUser, "User should be valid.");
-
+      Optional<User> verifyUser = userRepository.findByUserName("user1");
+      assertNotNull(verifyUser, "User should be valid.");
   }
 
   @AfterEach
