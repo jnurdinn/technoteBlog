@@ -21,9 +21,4 @@ public class AuthController {
     authService.signup(registerEntity);
   }
 
-  @PostMapping("/login")
-  public void login(@RequestBody LoginEntity loginEntity) {
-    authService.login(loginEntity);
-  }
-
 }
