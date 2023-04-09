@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, intial-scale=1">
+<title>TechNote :: Post</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>
+			<a th:href="@{'/'}">TechNote : by ColonelKatsu</a>
+		</h1>
+		<hr />
+		<div class="post">
+			<h2 th:text="${post.title}">Title</h2>
+			<p th:text="${post.body}">Body Text</p>
+			<h5
+				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">Post
+				Info</h5>
+		</div>
+		<ul sec:authorize="isAuthenticated()">
+			<li><a th:href="@{'/posts/'} + ${post.id} + '/edit'">Edit</a></li>
+			<li><a th:href="@{'/posts/'} + ${post.id} + '/delete'">Delete</a></li>
+		</ul>
+	</div>
+</body>
+</html>

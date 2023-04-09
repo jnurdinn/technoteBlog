@@ -1,13 +1,13 @@
-package com.colonelkatsu.technote;
+package com.colonelkatsu.techNotes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TechnoteApplication {
+public class TechNotesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TechnoteApplication.class, args);
+		SpringApplication.run(TechNotesApplication.class, args);
 	}
 
 }

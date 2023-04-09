@@ -1,10 +1,10 @@
-package com.colonelkatsu.technote;
+package com.colonelkatsu.techNotes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TechnoteApplicationTests {
+class TechNotesApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,12 +1,12 @@
-package com.colonelkatsu.technote.service;
+package com.colonelkatsu.techNotes.services;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.colonelkatsu.technote.model.Post;
-import com.colonelkatsu.technote.repository.PostRepository;
+import com.colonelkatsu.techNotes.models.Post;
+import com.colonelkatsu.techNotes.repositories.PostRepository;
 
 @Service
 public class PostService {
@@ -23,11 +23,19 @@ public class PostService {
   }
 
   public Post save(Post post) {
+
     if (post.getId() == null) {
       post.setCreatedAt(LocalDateTime.now());
+    } else {
+      post.setUpdatedAt(LocalDateTime.now());
     }
 
+
     return postRepository.save(post);
+  }
+
+  public void delete(Post post) {
+    postRepository.delete(post);
   }
 
 }
