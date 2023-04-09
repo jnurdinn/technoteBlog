@@ -15,7 +15,7 @@
 		</h1>
 		<hr />
 		<ul>
-			<li><a th:href="@{/posts/new}">[+]New Post</a></li>
+			<li sec:authorize="isAuthenticated()"><a th:href="@{/posts/new}">[+]New Post</a></li>
 		</ul>
 		<div class="posts-container">
 			<div class="post" th:each="post : ${posts}">
@@ -36,12 +36,11 @@
 			<li><a th:href="@{/register}">Register</a></li>
 		</ul>
 		<div sec:authorize="isAuthenticated()">
-			<form action="#"
-				th:action="@{/logout}"
-				method="POST">
+			<form action="#" th:action="@{/logout}" method="POST">
 				<div>
 					<label> Hi, <span sec:authentication="name">Username</span></label>
 				</div>
+				<button type="submit">Logout</button>
 			</form>
 		</div>
 	</div>

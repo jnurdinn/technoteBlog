@@ -13,7 +13,7 @@ public class AccountService {
 
   @Autowired
   private AccountRepository accountRepository;
-  
+
   @Autowired
   private PasswordEncoder passwordEncoder;
 
@@ -28,6 +28,11 @@ public class AccountService {
 
   public Optional<Account> findByEmailAddress(String emailAddress) {
     return accountRepository.findOneByEmailAddress(emailAddress);
+  }
+
+
+  public Optional<Account> findById(Long id) {
+    return accountRepository.findById(id);
   }
 
 }

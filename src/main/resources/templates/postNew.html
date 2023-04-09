@@ -15,8 +15,8 @@
 		<hr />
 		<form action="#" th:action="@{/posts/new}" th:object="${post}"
 			method="POST">
-			<input type="hidden" th:field="*{account}" /> <input type="hidden"
-				th:field="*{createdAt}" />
+			<input type="hidden" th:field="*{account}" />
+			<input type="hidden" th:field="*{createdAt}" />
 			<h2>Create New Post</h2>
 			<div>
 				<label for="new-post-title">Title</label> <input id="new-post-title"

@@ -32,4 +32,14 @@ public class Post {
   @ManyToOne
   @JoinColumn(name= "account_id", referencedColumnName = "id", nullable = false)
   private Account account;
+
+  @Override
+  public String toString() {
+    return "Post{" +
+        "id='" + id + "'" +
+        "title='" + title + "'" +
+        "createdAt='" + createdAt + "'" +
+        "updatedAt='" + updatedAt + "'" +
+        "}";
+  }
 }

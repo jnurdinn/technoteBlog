@@ -1,10 +1,13 @@
 package com.colonelkatsu.techNotes.controllers;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,9 +42,16 @@ public class PostController {
   }
 
   @GetMapping("/posts/new")
-  public String createNewPost(Model model) {
+  @PreAuthorize("isAuthenticated()")
+  public String createNewPost(Model model, Principal principal) {
 
-    Optional<Account> optionalAccount = accountService.findByEmailAddress("rikkatakarada@test.com");
+    String authUsername = "anonymousUser";
+
+    if (principal != null) {
+      authUsername = principal.getName();
+    }
+
+    Optional<Account> optionalAccount = accountService.findByEmailAddress(authUsername);
 
     if(optionalAccount.isPresent()) {
       Post post = new Post();
@@ -50,15 +60,70 @@ public class PostController {
       return "postNew";
     }
 
-    return("error403");
+    //return("error403");
+    return("redirect:/posts/" + authUsername);
   }
 
   @PostMapping("/posts/new")
-  public String registerNewUser(@ModelAttribute Post post) {
+  @PreAuthorize("isAuthenticated()")
+  public String submitNewPost(@ModelAttribute Post post) {
     post.setCreatedAt(LocalDateTime.now());
     postService.save(post);
 
     return("redirect:/posts/" + post.getId());
+  }
+
+  @GetMapping("/posts/{id}/edit")
+  @PreAuthorize("isAuthenticated()")
+  public String getExistingPost(@PathVariable Long id, Model model) {
+
+    Optional<Post> optionalPost = postService.getById(id);
+
+    if(optionalPost.isPresent()) {
+      Post post = optionalPost.get();
+      model.addAttribute("post", post);
+      return "postEdit";
+    }
+
+    return("error404");
+  }
+
+  @PostMapping("/posts/{id}")
+  @PreAuthorize("isAuthenticated()")
+  public String submitEditedPost(@PathVariable Long id, Post post, BindingResult result, Model model) {
+
+    Optional<Post> optionalPost = postService.getById(id);
+
+    if (optionalPost.isPresent()) {
+      Post existingPost = optionalPost.get();
+
+      existingPost.setTitle(post.getTitle());
+      existingPost.setBody(post.getBody());
+      existingPost.setUpdatedAt(LocalDateTime.now());
+
+      postService.save(existingPost);
+
+      return("redirect:/posts/" + post.getId());
+    }
+
+    return("error404");
+  }
+
+  @GetMapping("/posts/{id}/delete")
+  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+  public String deletePost(@PathVariable Long id) {
+
+    Optional<Post> optionalPost = postService.getById(id);
+
+    if(optionalPost.isPresent()) {
+      Post post = optionalPost.get();
+
+      postService.delete(post);
+
+      return "redirect:/";
+    }
+
+    return("error404");
   }
 
 }

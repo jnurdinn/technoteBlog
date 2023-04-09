@@ -32,7 +32,7 @@ public class LoginUserDetailsService implements UserDetailsService {
         .map(authority -> new SimpleGrantedAuthority(authority.getName()))
         .collect(Collectors.toList());
 
-    return new org.springframework.security.core.userdetails.User(account.getFirstname(),
+    return new org.springframework.security.core.userdetails.User(account.getEmailAddress(),
         account.getPassword(), grantedAuthorities);
   }
 
