@@ -27,9 +27,10 @@ public class SeedData implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    List<Account> accounts = accountService.getAll();
     List<Post> posts = postService.getAll();
 
-    if (posts.size() == 0) {
+    if (accounts.size() == 0 && posts.size() == 0) {
 
       Authority user = new Authority();
       user.setName("ROLE_USER");
