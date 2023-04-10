@@ -17,9 +17,14 @@
 		<div class="post">
 			<h2 th:text="${post.title}">Title</h2>
 			<p th:text="${post.body}">Body Text</p>
-			<h5
-				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">Post
-				Info</h5>
+			<h5 th:if="${post.updatedAt == null}"
+				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+				Info Unedited
+			</h5>
+			<h5 th:unless="${post.updatedAt == null}"
+				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+				Info Edited
+			</h5>
 		</div>
 		<ul sec:authorize="isAuthenticated()">
 			<li><a th:href="@{'/posts/'} + ${post.id} + '/edit'">Edit</a></li>

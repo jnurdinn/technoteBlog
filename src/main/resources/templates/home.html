@@ -24,9 +24,14 @@
 						Title </a>
 				</h2>
 				<p th:text="${post.body}">Body Text</p>
-				<h5
-					th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">Post
-					Info</h5>
+				<h5 th:if="${post.updatedAt == null}"
+				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+				Info Unedited
+			</h5>
+			<h5 th:unless="${post.updatedAt == null}"
+				th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+				Info Edited
+			</h5>
 				<br />
 			</div>
 		</div>

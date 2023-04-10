@@ -39,44 +39,19 @@ public class SeedData implements CommandLineRunner {
       admin.setName("ROLE_ADMIN");
       authorityRepository.save(admin);
 
-      Account account1 = new Account();
-      Account account2 = new Account();
+      Account adminAccount = new Account();
+      adminAccount.setFirstname("Admin");
+      adminAccount.setLastname("Admin");
+      adminAccount.setEmailAddress("admin@katsu.icu");
+      adminAccount.setPassword("password12345678");
 
-      account1.setFirstname("Rikka");
-      account1.setLastname("Takarada");
-      account1.setEmailAddress("rikkatakarada@test.com");
-      account1.setPassword("12345678");
-      Set<Authority> authorities1 = new HashSet<>();
-      authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities1::add);
-      authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
-      account1.setAuthorities(authorities1);
+      Set<Authority> adminAuthorities = new HashSet<>();
+      authorityRepository.findById("ROLE_ADMIN").ifPresent(adminAuthorities::add);
+      authorityRepository.findById("ROLE_USER").ifPresent(adminAuthorities::add);
+      adminAccount.setAuthorities(adminAuthorities);
 
-      account2.setFirstname("Yume");
-      account2.setLastname("Minami");
-      account2.setEmailAddress("yumeminami@test.com");
-      account2.setPassword("12345678");
-      Set<Authority> authorities2 = new HashSet<>();
-      authorityRepository.findById("ROLE_USER").ifPresent(authorities2::add);
-      account2.setAuthorities(authorities2);
-
-      accountService.save(account1);
-      accountService.save(account2);
-
-      Post post1 = new Post();
-      post1.setTitle("Post 1 title");
-      post1.setBody("This is the body of post 1.");
-      post1.setAccount(account1);
-
-      Post post2 = new Post();
-      post2.setTitle("Post 2 title");
-      post2.setBody("This is the body of post 2.");
-      post2.setAccount(account2);
-
-      postService.save(post1);
-      postService.save(post2);
+      accountService.save(adminAccount);
     }
-
-    // TODO : Remove seedData & use testing
   }
 
 }
