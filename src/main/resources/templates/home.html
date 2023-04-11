@@ -283,7 +283,7 @@
 													Edit Post
 												</a>
 												<a class="dropdown-item" href="#" data-toggle="modal"
-													data-target="#deleteModal">
+													th:attr="data-target='#deleteModal' + ${post.id}">
 													<i class="fas fa-trash-alt"></i>
 													Delete Post
 												</a>
@@ -363,27 +363,29 @@
 	</div>
 
 	<!-- Delete Post Modal-->
-	<div sec:authorize="isAuthenticated()" class="modal fade"
-		id="deleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Delete Post?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Do you want to delete this post?
-					<br>
-					Deleted post is nearly impossible to be retained again!
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" href="/logout">Delete Post!</a>
+	<div class="post" th:each="post : ${posts}">
+		<div sec:authorize="isAuthenticated()" class="modal fade"
+			th:attr="id='deleteModal' + ${post.id}" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel" th:text="'Delete Post : ' + ${post.title} + ' ?'">Delete Post?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Do you want to delete this post?
+						<br>
+						Deleted post is nearly impossible to be rescued!
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">Cancel</button>
+						<a class="btn btn-danger" th:href="@{'/posts/'} + ${post.id} + '/delete'">Delete Post!</a>
+					</div>
 				</div>
 			</div>
 		</div>

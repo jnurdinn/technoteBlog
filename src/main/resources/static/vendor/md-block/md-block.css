@@ -1,0 +1,5 @@
+@charset "UTF-8";
+md-block {
+	white-space: pre;
+	font-family: monospace;
+}

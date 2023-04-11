@@ -20,12 +20,7 @@ public class HomeController {
   public String home(Model model) {
 
     List<Post> posts = postService.getAll();
-    ArrayList<String> formattedDates = new ArrayList<String>();
-
     model.addAttribute("posts", posts);
-    posts.forEach((post) -> {
-      formattedDates.add(CommonUtil.datetimeFormatter(post.getCreatedAt()));
-    });
 
     return("home");
   }
