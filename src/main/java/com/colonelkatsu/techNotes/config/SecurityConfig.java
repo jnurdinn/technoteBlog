@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
 
-  private static final String[] WHITELIST = {"/", "/register", "/h2-console/*", "/**/*.{js,html,css,svg}"};
+  private static final String[] WHITELIST = {"/", "/register", "/h2-console/*", "/**/*.{js,html,css,svg,png}"};
 
   @Bean
   static PasswordEncoder passwordEncoder() {
