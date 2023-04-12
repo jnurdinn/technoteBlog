@@ -14,12 +14,28 @@ public class PostService {
   @Autowired
   private PostRepository postRepository;
 
-  public Optional<Post> getById(Long id){
+  public Optional<Post> getById(Long id) {
     return postRepository.findById(id);
   }
 
-  public List<Post> getAll(){
-    return postRepository.findAll();
+  public List<Post> getAll() {
+    List<Post> allPosts = postRepository.findAll();
+
+    if (allPosts.isEmpty()) {
+      return null;
+    }
+
+    for (int i = 0; i < allPosts.size(); i++) {
+
+      String bodyPost = allPosts.get(i).getBody();
+      int maxChar = 125;
+
+      if (bodyPost.length() > maxChar) {
+        allPosts.get(i).setBody(bodyPost.substring(0, maxChar) + "...");
+      }
+
+    }
+    return allPosts;
   }
 
   public Post save(Post post) {

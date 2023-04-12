@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
 
-  private static final String[] WHITELIST = {"/", "/register", "/h2-console/*"};
+  private static final String[] WHITELIST = {"/", "/register", "/h2-console/*", "/**/*.{js,html,css,svg,png}"};
 
   @Bean
   static PasswordEncoder passwordEncoder() {
@@ -22,8 +22,10 @@ public class SecurityConfig {
 
   @Bean
   SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.authorizeHttpRequests().antMatchers(WHITELIST).permitAll()
-        .antMatchers(HttpMethod.GET, "/posts/*").permitAll().anyRequest().authenticated();
+    httpSecurity.authorizeHttpRequests()
+        .antMatchers(WHITELIST).permitAll()
+        .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
+        .anyRequest().authenticated();
 
     httpSecurity.formLogin().loginPage("/login").loginProcessingUrl("/login")
         .usernameParameter("emailAddress").passwordParameter("password")

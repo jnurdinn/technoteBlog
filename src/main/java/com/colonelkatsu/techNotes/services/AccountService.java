@@ -1,6 +1,7 @@
 package com.colonelkatsu.techNotes.services;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,10 @@ public class AccountService {
 
   @Autowired
   private PasswordEncoder passwordEncoder;
+
+  public List<Account> getAll(){
+    return accountRepository.findAll();
+  }
 
   public Account save(Account account) {
 
