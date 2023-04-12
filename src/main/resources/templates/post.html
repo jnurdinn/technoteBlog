@@ -23,71 +23,8 @@
 </head>
 
 <body id="page-top">
-
-	<!-- Page Wrapper -->
 	<div id="wrapper">
-
-		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-			id="accordionSidebar">
-
-			<a
-					class="sidebar-brand d-flex align-items-center justify-content-center"
-					href="/"> <img height="45px" th:src="@{/img/technote-logo.png}" />
-			</a>
-
-
-		<!-- Divider -->
-				<hr class="sidebar-divider">
-				<!-- Heading -->
-				<div class="sidebar-heading">Navigation</div>
-				<!-- Nav Item - Home -->
-				<li class="nav-item active"><a class="nav-link" href="/"> <i
-						class="fas fa-home"></i> <span>Home</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="/"> <i
-						class="fas fa-address-card"></i> <span>About Us</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="/"> <i
-						class="fas fa-phone"></i> <span>Contact</span>
-				</a></li>
-				<!-- Divider -->
-				<hr class="sidebar-divider">
-				<!-- Heading -->
-				<div class="sidebar-heading">See Post by Timeline</div>
-				<!-- Nav Item - Pages Collapse Menu -->
-				<li class="nav-item"><a class="nav-link collapsed" href="#"
-					data-toggle="collapse" data-target="#collapseOne"
-					aria-expanded="true" aria-controls="collapseTwo"> <span>2023</span>
-				</a>
-					<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-						data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Apr</h6>
-							<a class="collapse-item" href="#">Post 1</a>
-							<h6 class="collapse-header">May</h6>
-							<a class="collapse-item" href="#">Post 2</a>
-						</div>
-					</div></li>
-				<li class="nav-item"><a class="nav-link collapsed" href="#"
-					data-toggle="collapse" data-target="#collapseTwo"
-					aria-expanded="true" aria-controls="collapseTwo"> <span>2024</span>
-				</a>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-						data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">Apr</h6>
-							<a class="collapse-item" href="#">Post 1</a>
-							<h6 class="collapse-header">May</h6>
-							<a class="collapse-item" href="#">Post 2</a>
-						</div>
-					</div></li>
-
-
-
-		</ul>
-		<!-- End of Sidebar -->
+		<ul th:replace="common/common.html :: sidebar"></ul>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -96,119 +33,11 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<nav
-					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-					<!-- Sidebar Toggle (Topbar) -->
-					<button id="sidebarToggleTop"
-						class="btn btn-link d-md-none rounded-circle mr-3">
-						<i class="fa fa-bars"></i>
-					</button>
-
-					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-
-					<!-- Topbar Navbar -->
-					<ul class="navbar-nav ml-auto">
-
-						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-						<li class="nav-item dropdown no-arrow d-sm-none">
-							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class="fas fa-search fa-fw"></i>
-							</a>
-							<!-- Dropdown - Messages -->
-							<div
-								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-								aria-labelledby="searchDropdown">
-								<form class="form-inline mr-auto w-100 navbar-search">
-									<div class="input-group">
-										<input type="text"
-											class="form-control bg-light border-0 small"
-											placeholder="Search for..." aria-label="Search"
-											aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
-												<i class="fas fa-search fa-sm"></i>
-											</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</li>
-
-						<div class="topbar-divider d-none d-sm-block"></div>
-
-
-						<!-- Nav Item - User Information Unauthenticated -->
-						<li class="nav-item dropdown no-arrow"
-							sec:authorize="!isAuthenticated()">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">
-									Hi,
-									<b>Stranger</b>
-									!
-								</span>
-							</a>
-							<!-- Dropdown - User Information -->
-							<div
-								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="/login">
-									<i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Login
-								</a>
-							</div>
-						</li>
-
-						<!-- Nav Item - User Information Authenticated -->
-						<li class="nav-item dropdown no-arrow"
-							sec:authorize="isAuthenticated()">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">
-									Hi,
-									<b>
-										<span sec:authentication="name">Username</span>
-									</b>
-									!
-								</span>
-							</a>
-							<!-- Dropdown - User Information -->
-							<div
-								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#" data-toggle="modal"
-									data-target="#logoutModal">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a>
-							</div>
-						</li>
-
-					</ul>
-
-				</nav>
-				<!-- End of Topbar -->
+				<nav th:replace="common/common.html :: topbar"></nav>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
+
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -216,16 +45,14 @@
 							Title</h1>
 						<div>
 							<a sec:authorize="isAuthenticated()"
-							th:href="@{'/posts/'} + ${post.id} + '/edit'"
-							class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-							<i class="fas fa-edit fa-sm"></i>
-							Edit Post
-						</a>
-						<a sec:authorize="isAuthenticated()" data-target="#deleteModal" data-toggle="modal" href="#"
-							class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-							<i class="fas fa-trash-alt fa-sm"></i>
-							Delete Post
-						</a>
+								th:href="@{'/posts/'} + ${post.id} + '/edit'"
+								class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+								<i class="fas fa-edit fa-sm"></i> Edit Post
+							</a> <a sec:authorize="isAuthenticated()" data-target="#deleteModal"
+								data-toggle="modal" href="#"
+								class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+								<i class="fas fa-trash-alt fa-sm"></i> Delete Post
+							</a>
 						</div>
 					</div>
 					<div class="align-items-center justify-content-between mb-4">
@@ -238,102 +65,23 @@
 						<h5 th:text="${post.body}">Body Text</h5>
 					</div>
 
-
 				</div>
+				<!-- /.container-fluid -->
 
 			</div>
 			<!-- End of Main Content -->
 
 			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Technote by Colonel Katsu 2023</span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
+			<footer th:replace="common/common.html :: footer"></footer>
 
 		</div>
 		<!-- End of Content Wrapper -->
 
 	</div>
-	<!-- End of Page Wrapper -->
 
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top">
-		<i class="fas fa-angle-up"></i>
-	</a>
+	<div th:replace="common/common.html :: logoutModal"></div>
 
-	<!-- Logout Modal-->
-	<div sec:authorize="isAuthenticated()" class="modal fade"
-		id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="/logout">Logout</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Delete Post Modal-->
-	<div sec:authorize="isAuthenticated()" class="modal fade"
-		id="deleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"
-						th:text="'Delete Post : ' + ${post.title} + ' ?'">Delete
-						Post?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Do you want to delete this post?
-					<br>
-					Deleted post is nearly impossible to be rescued!
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger"
-						th:href="@{'/posts/'} + ${post.id} + '/delete'">Delete Post!</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-	<!-- Bootstrap core JavaScript-->
-
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-	<script th:src="@{/vendor/md-block/md-block.js}"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
-
-	<!-- Custom scripts for all pages-->
-
-
+	<div th:replace="common/common.html :: javaScript"></div>
 </body>
 
 </html>
