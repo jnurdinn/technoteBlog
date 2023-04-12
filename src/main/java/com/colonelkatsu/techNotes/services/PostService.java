@@ -22,7 +22,7 @@ public class PostService {
     List<Post> allPosts = postRepository.findAll();
 
     if (allPosts.isEmpty()) {
-      return null;
+      return List.of();
     }
 
     for (int i = 0; i < allPosts.size(); i++) {

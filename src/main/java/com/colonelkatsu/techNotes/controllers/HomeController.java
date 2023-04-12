@@ -20,7 +20,7 @@ public class HomeController {
     List<Post> posts = postService.getAll();
     model.addAttribute("posts", posts);
 
-    return("home");
+    return("index");
   }
 
 }

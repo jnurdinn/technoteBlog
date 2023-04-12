@@ -43,7 +43,7 @@
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Latest Posts</h1>
-						<a sec:authorize="isAuthenticated()" href="/posts/new"
+						<a sec:authorize="hasAuthority('ROLE_ADMIN')" href="/posts/new"
 							class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
 							<i class="fas fa-plus fa-sm"></i> New Post
 						</a>
@@ -63,7 +63,7 @@
 											<a th:href="@{'/posts/' + ${post.id}}"
 												th:text="${post.title}"> Post Title </a>
 										</h6>
-										<div sec:authorize="isAuthenticated()"
+										<div sec:authorize="hasAuthority('ROLE_ADMIN')"
 											class="dropdown no-arrow">
 											<a class="dropdown-toggle" role="button"
 												id="dropdownMenuLink" data-toggle="dropdown"
@@ -117,7 +117,7 @@
 
 	<!-- Delete Post Modal-->
 	<div class="post" th:each="post : ${posts}">
-		<div sec:authorize="isAuthenticated()" class="modal fade"
+		<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="modal fade"
 			th:attr="id='deleteModal' + ${post.id}" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">

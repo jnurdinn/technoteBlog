@@ -44,25 +44,40 @@
 						<h1 class="h3 mb-0 text-gray-800">Register New Account</h1>
 					</div>
 					<div class="align-items-center justify-content-between mb-4">
-						<form action="#" th:action="@{/posts/new}" th:object="${post}"
+						<form action="#" th:action="@{/register}" th:object="${registerAccount}"
 							method="POST">
-							<input type="hidden" th:field="*{account}" /> <input
-								type="hidden" th:field="*{createdAt}" />
 							<div>
-								<label for="new-post-title">Title</label> <br> <input
-									id="new-post-title" type="text" th:field="*{title}"
-									class="form-control" placeholder="Title" required />
+								<label for="firstname">First Name</label> <br> <input
+									id="firstname" type="text" th:field="*{firstname}"
+									class="form-control" placeholder="First Name" required />
 							</div>
 							<br>
 							<div>
-								<label for="new-post-body">Body</label> <br>
-								<textarea id="new-post-body" class="form-control"
-									th:field="*{body}" placeholder="What is in your mind?" required></textarea>
+								<label for="lastname">Last Name</label> <br> <input
+									id="lastname" type="text" th:field="*{lastname}"
+									class="form-control" placeholder="Last Name" required />
+							</div>
+							<br>
+							<div>
+								<label for="emailAddress">Email Address</label> <br> <input
+									id="mailAddress" type="email" th:field="*{emailAddress}"
+									class="form-control" placeholder="Email Address" required />
+							</div>
+							<br>
+							<div>
+								<label for="password">Password</label> <br> <input
+									id="password" type="password" th:field="*{password}"
+									class="form-control" placeholder="Password" required />
+							</div>
+							<br>
+							<label for="roles">Roles</label>
+							<div class="checkbox">
+								<label><input type="checkbox" th:field="*{adminRole}"> Apply Admin Role</label>
 							</div>
 							<br>
 							<button type="submit"
 								class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-								<i class="fas fa-save fa-sm"></i> Publish Post
+								<i class="fas fa-user"></i> Register Account
 							</button>
 							<a href='/'
 								class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
