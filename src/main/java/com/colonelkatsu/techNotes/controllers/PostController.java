@@ -38,7 +38,7 @@ public class PostController {
       return "post";
     }
 
-    return("error404");
+    return("error/404");
   }
 
   @GetMapping("/posts/new")
@@ -60,8 +60,7 @@ public class PostController {
       return "postNew";
     }
 
-    //return("error403");
-    return("redirect:/posts/" + authUsername);
+    return("error/403");
   }
 
   @PostMapping("/posts/new")
@@ -85,7 +84,7 @@ public class PostController {
       return "postEdit";
     }
 
-    return("error404");
+    return("error/404");
   }
 
   @PostMapping("/posts/{id}")
@@ -106,7 +105,7 @@ public class PostController {
       return("redirect:/posts/" + post.getId());
     }
 
-    return("error404");
+    return("error/404");
   }
 
   @GetMapping("/posts/{id}/delete")
@@ -123,7 +122,7 @@ public class PostController {
       return "redirect:/";
     }
 
-    return("error404");
+    return("error/404");
   }
 
 }

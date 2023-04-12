@@ -1,6 +1,5 @@
 package com.colonelkatsu.techNotes.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.colonelkatsu.techNotes.models.Post;
 import com.colonelkatsu.techNotes.services.PostService;
-import com.colonelkatsu.techNotes.utils.CommonUtil;
 
 @Controller
 public class HomeController {

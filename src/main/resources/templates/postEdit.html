@@ -255,14 +255,14 @@
 								<label for="edit-post-title">Title</label>
 								<br>
 								<input id="edit-post-title" type="text" th:field="*{title}"
-									class="form-control" placeholder="Title" />
+									class="form-control" placeholder="Title" required/>
 							</div>
 							<br>
 							<div>
 								<label for="edit-post-body">Body</label>
 								<br>
 								<textarea id="edit-post-body" class="form-control"
-									th:field="*{body}" placeholder="What is in your mind?"></textarea>
+									th:field="*{body}" placeholder="What is in your mind?" required></textarea>
 							</div>
 							<br>
 							<div>
