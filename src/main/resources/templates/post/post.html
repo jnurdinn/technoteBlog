@@ -44,11 +44,11 @@
 						<h1 class="h3 mb-0 text-gray-800" th:text="${post.title}">Post
 							Title</h1>
 						<div>
-							<a sec:authorize="isAuthenticated()"
+							<a sec:authorize="hasAuthority('ROLE_ADMIN')"
 								th:href="@{'/posts/'} + ${post.id} + '/edit'"
 								class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
 								<i class="fas fa-edit fa-sm"></i> Edit Post
-							</a> <a sec:authorize="isAuthenticated()" data-target="#deleteModal"
+							</a> <a sec:authorize="hasAuthority('ROLE_ADMIN')" data-target="#deleteModal"
 								data-toggle="modal" href="#"
 								class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 								<i class="fas fa-trash-alt fa-sm"></i> Delete Post
@@ -80,7 +80,7 @@
 	</div>
 
 	<!-- Delete Post Modal-->
-	<div sec:authorize="isAuthenticated()" class="modal fade"
+	<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="modal fade"
 		id="deleteModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

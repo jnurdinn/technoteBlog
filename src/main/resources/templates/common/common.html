@@ -84,8 +84,7 @@
 
 
 		<!-- Content Wrapper -->
-		<div id="content-wrapper"
-			class="d-flex flex-column">
+		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
@@ -141,7 +140,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>CLOUD</b>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i class="fas fa-cloud"></i> CLOUD</b>
 							</span>
 							</a>
 						</div>
@@ -151,7 +150,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>DEV</b>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i class="fas fa-code"></i> DEV</b>
 							</span>
 							</a>
 						</div>
@@ -161,7 +160,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>MISC.</b>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i class="fas fa-border-all"></i> MISC.</b>
 							</span>
 							</a>
 						</div>
@@ -202,6 +201,18 @@
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
+								<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+									<h6 class="dropdown-header">Admin Control</h6>
+									<a class="dropdown-item" href="/register"> <i
+										class="fas fa-user-plus fa-sm fa-fw mr-2 text-gray-400"></i>
+										Register Account
+									</a> <a class="dropdown-item" href="/user-config"> <i
+										class="fas fa-user-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+										Configure Accounts
+									</a>
+									<div class="dropdown-divider"></div>
+								</div>
+								<h6 class="dropdown-header">Account</h6>
 								<a class="dropdown-item" href="#" data-toggle="modal"
 									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -215,8 +226,7 @@
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content, different for each template file -->
-				<div class="container-fluid">
-				</div>
+				<div class="container-fluid"></div>
 				<!-- /.container-fluid -->
 
 			</div>
@@ -239,8 +249,8 @@
 	<!-- End of Page Wrapper -->
 
 	<!-- Logout Modal-->
-	<div th:fragment="logoutModal" sec:authorize="isAuthenticated()" class="modal fade"
-		id="logoutModal" tabindex="-1" role="dialog"
+	<div th:fragment="logoutModal" sec:authorize="isAuthenticated()"
+		class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -269,6 +279,9 @@
 
 		<!-- Core plugin JavaScript-->
 		<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	</div>
 
 </body>

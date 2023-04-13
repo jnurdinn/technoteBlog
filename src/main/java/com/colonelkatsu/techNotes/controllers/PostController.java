@@ -35,7 +35,7 @@ public class PostController {
       Post post = optionalPost.get();
       model.addAttribute("post", post);
 
-      return "post";
+      return "post/post";
     }
 
     return("error/404");
@@ -57,7 +57,7 @@ public class PostController {
       Post post = new Post();
       post.setAccount(optionalAccount.get());
       model.addAttribute("post", post);
-      return "postNew";
+      return "post/post-new";
     }
 
     return("error/403");
@@ -81,7 +81,7 @@ public class PostController {
     if(optionalPost.isPresent()) {
       Post post = optionalPost.get();
       model.addAttribute("post", post);
-      return "postEdit";
+      return "post/post-edit";
     }
 
     return("error/404");
