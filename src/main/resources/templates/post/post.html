@@ -62,7 +62,7 @@
 						<p th:unless="${post.updatedAt == null}"
 							th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
 							Info Edited</p>
-						<h5 th:text="${post.body}">Body Text</h5>
+						<div th:utext="${post.body}">Formatted Body Text</div>
 					</div>
 
 				</div>

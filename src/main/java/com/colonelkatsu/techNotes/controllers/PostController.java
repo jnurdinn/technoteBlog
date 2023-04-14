@@ -29,7 +29,7 @@ public class PostController {
   @GetMapping("/posts/{id}")
   public String getPost(@PathVariable Long id, Model model) {
 
-    Optional<Post> optionalPost = postService.getById(id);
+    Optional<Post> optionalPost = postService.getByIdForRender(id);
 
     if(optionalPost.isPresent()) {
       Post post = optionalPost.get();

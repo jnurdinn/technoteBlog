@@ -27,10 +27,10 @@ public class ControllerSmokeTest {
 
   @Test
   public void smokeTest() throws Exception {
-    assertThat(homeController).isNull();
-    assertThat(registerController).isNull();
-    assertThat(loginController).isNull();
-    assertThat(postController).isNull();
+    assertThat(homeController).isNotNull();
+    assertThat(registerController).isNotNull();
+    assertThat(loginController).isNotNull();
+    assertThat(postController).isNotNull();
   }
 
 
