@@ -14,7 +14,7 @@ public class HomeController {
   @Autowired
   private PostService postService;
 
-  @GetMapping("/")
+  @GetMapping({"/", "/posts"})
   public String home(Model model) {
 
     List<Post> posts = postService.getAll();

@@ -284,6 +284,15 @@
 		<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	</div>
 
+	<!-- SimpleMD JavaScript-->
+	<div th:fragment="simpleMDJs">
+		<!-- SimpleMDE Javascript-->
+		<script th:src="@{/vendor/simplemde-markdown-editor/simplemde.min.js}"></script>
+		<script>
+			var simplemde = new SimpleMDE({element: document.getElementById("new-post-body")});
+		</script>
+	</div>
+
 </body>
 
 

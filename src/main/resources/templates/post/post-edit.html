@@ -19,6 +19,7 @@
 
 <!-- Custom styles for this template-->
 <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+<link th:href="@{/css/simplemde.min.css}" rel="stylesheet">
 
 </head>
 
@@ -55,9 +56,9 @@
 							</div>
 							<br>
 							<div>
-								<label for="edit-post-body">Body</label> <br>
-								<textarea id="edit-post-body" class="form-control"
-									th:field="*{body}" placeholder="What is in your mind?" required></textarea>
+								<label for="new-post-body">Body</label> <br>
+								<textarea type="text" id="new-post-body" class="form-control"
+									th:field="*{body}" placeholder="What is in your mind?" autocomplete="off"></textarea>
 							</div>
 							<br>
 							<div>
@@ -88,6 +89,8 @@
 	<div th:replace="common/common.html :: logoutModal"></div>
 
 	<div th:replace="common/common.html :: javaScript"></div>
+
+	<div th:replace="common/common.html :: simpleMDJs"></div>
 </body>
 
 </html>
