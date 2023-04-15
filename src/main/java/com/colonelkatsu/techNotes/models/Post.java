@@ -1,16 +1,13 @@
 package com.colonelkatsu.techNotes.models;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -22,10 +19,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Post {
-
-  //  @Id
-  // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  // private Long id;
 
   @Id
   @GeneratedValue(generator = "sequence-generator")

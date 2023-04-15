@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="">
 
-	<title>ColonelKatsu's TechNote</title>
+	<title>Technote :: About Me</title>
 
 	<!-- Custom fonts for this template-->
 	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -34,63 +34,25 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Latest Posts</h1>
-						<a sec:authorize="hasAuthority('ROLE_ADMIN')" href="/posts/new"
-							class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-							<i class="fas fa-plus fa-sm"></i> New Post
-						</a>
+						<h1 class="h3 mb-0 text-gray-800">About Us</h1>
 					</div>
-
-					<!-- Post Container -->
-					<div class="post" th:each="post : ${posts}">
-
-						<!-- Content Row -->
-						<div class="row">
-							<div class="col">
-								<div class="card shadow mb-4">
-									<!-- Card Header - Dropdown -->
-									<div
-										class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">
-											<a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"> Post Title
-											</a>
-										</h6>
-										<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="dropdown no-arrow">
-											<a class="dropdown-toggle" role="button" id="dropdownMenuLink"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-													class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-												aria-labelledby="dropdownMenuLink">
-												<a class="dropdown-item" th:href="@{'/posts/'} + ${post.id} + '/edit'">
-													<i class="fas fa-edit"></i> Edit Post
-												</a> <a class="dropdown-item" href="#" data-toggle="modal"
-													th:attr="data-target='#deleteModal' + ${post.id}"> <i
-														class="fas fa-trash-alt"></i> Delete Post
-												</a>
-
-											</div>
-										</div>
-									</div>
-									<!-- Card Body -->
-									<div class="card-body">
-										<div th:utext="${post.body}">Formatted Body Text</div>
-										<p th:if="${post.updatedAt == null}"
-											th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + '.'">
-											Post
-											Info Unedited</p>
-										<h6 th:unless="${post.updatedAt == null}"
-											th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">
-											Post
-											Info Edited</h6>
-										<p class="mb-0">
-											<a th:href="@{'/posts/' + ${post.id}}"> Read More >> </a>
-										</p>
-									</div>
-								</div>
+					<!-- Content Row -->
+					<div class="card shadow mb-4">
+						<!-- Card Body -->
+						<div class="card-body">
+							<div>
+								<p>Hi, Katsu here! This blog is ColonelKatsu's personal note to write &amp; share
+									everything that is related to IT tech (especially I am an Cloud geek and aspiring to
+									become a DevOps engineer).</p>
+								<p>This blog is written mainly in Spring Boot which I think is a good way of practice
+									for not only web-app development but also good practice of code deployment (Plan to
+									use this code as a training media for something like CICD?). This blog should always
+									be update with better functionality as long as I still update the version of the
+									blog.</p>
+								<p>Lastly, if you ever want to contact me directly, feel free to hit me up via <a
+										href="/contact-me">contact page</a>.</p>
 							</div>
 						</div>
 					</div>
