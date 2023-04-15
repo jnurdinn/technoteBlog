@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
 
-<title>TechNote :: Register New Account</title>
+	<title>TechNote :: Register New Account</title>
 
-<!-- Custom fonts for this template-->
-<link th:href="@{/vendor/fontawesome-free/css/all.min.css}"
-	rel="stylesheet" type="text/css">
-<link th:href="@{/css/font.css}" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font.css}" rel="stylesheet">
 
-<!-- Custom styles for this template-->
-<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template-->
+	<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
 
 </head>
 
@@ -37,65 +34,56 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{/register}" th:object="${registerAccount}"
-							method="POST">
-					<!-- Page Heading -->
-					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Register New Account</h1>
-						<div>
-							<button type="submit"
-							class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-							<i class="fas fa-user"></i> Register Account
-						</button>
-						<a href='/'
-							class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-							<i class="fas fa-times fa-sm"></i> Cancel
-						</a>
+					<form action="#" th:action="@{/register}" th:object="${registerAccount}" method="POST">
+						<!-- Page Heading -->
+						<div class="d-sm-flex align-items-center justify-content-between mb-4">
+							<h1 class="h3 mb-0 text-gray-800">Register New Account</h1>
+							<div>
+								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+									<i class="fas fa-user"></i> Register Account
+								</button>
+								<a href='/' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+									<i class="fas fa-times fa-sm"></i> Cancel
+								</a>
+							</div>
 						</div>
-					</div>
-					<div class="align-items-center justify-content-between mb-4">
-																			<!-- Content Row -->
-																			<div class="card shadow">
-																				<!-- Card Body -->
-																				<div class="card-body">
-																					<div>
-																						<label for="firstname">First Name</label> <br> <input
-																							id="firstname" type="text" th:field="*{firstname}"
-																							class="form-control" placeholder="First Name" required />
-																					</div>
-																					<br>
-																					<div>
-																						<label for="lastname">Last Name</label> <br> <input
-																							id="lastname" type="text" th:field="*{lastname}"
-																							class="form-control" placeholder="Last Name" required />
-																					</div>
-																					<br>
-																					<div>
-																						<label for="emailAddress">Email Address</label> <br> <input
-																							id="mailAddress" type="email" th:field="*{emailAddress}"
-																							class="form-control" placeholder="Email Address" required />
-																					</div>
-																					<br>
-																					<div>
-																						<label for="password">Password</label> <br> <input
-																							id="password" type="password" th:field="*{password}"
-																							class="form-control" placeholder="Password" required />
-																					</div>
-																					<br>
-																					<label for="roles">Roles</label>
-																					<div class="checkbox">
-																						<label><input type="checkbox" th:field="*{adminRole}"> Apply Admin Role</label>
-																					</div>
-																				</div>
-																			</div>
-
-
-
-
-					</div>
-				</form>
-
+						<div class="align-items-center justify-content-between mb-4">
+							<!-- Content Row -->
+							<div class="card shadow">
+								<!-- Card Body -->
+								<div class="card-body">
+									<div>
+										<label for="firstname">First Name</label> <br> <input id="firstname" type="text"
+											th:field="*{firstname}" class="form-control" placeholder="First Name"
+											required />
+									</div>
+									<br>
+									<div>
+										<label for="lastname">Last Name</label> <br> <input id="lastname" type="text"
+											th:field="*{lastname}" class="form-control" placeholder="Last Name"
+											required />
+									</div>
+									<br>
+									<div>
+										<label for="emailAddress">Email Address</label> <br> <input id="mailAddress"
+											type="email" th:field="*{emailAddress}" class="form-control"
+											placeholder="Email Address" required />
+									</div>
+									<br>
+									<div>
+										<label for="password">Password</label> <br> <input id="password" type="password"
+											th:field="*{password}" class="form-control" placeholder="Password"
+											required />
+									</div>
+									<br>
+									<label for="roles">Roles</label>
+									<div class="checkbox">
+										<label><input type="checkbox" th:field="*{adminRole}"> Apply Admin Role</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 
 			</div>

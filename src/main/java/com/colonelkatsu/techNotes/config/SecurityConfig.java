@@ -9,11 +9,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
 
-  private static final String[] WHITELIST = {"/", "/h2-console/*", "/**/*.{js,html,css,svg,png}"};
+  private static final String[] WHITELIST = {"/", "/contact", "/**/*.{js,html,css,svg,png}"};
 
   @Bean
   static PasswordEncoder passwordEncoder() {
@@ -27,10 +29,10 @@ public class SecurityConfig {
         .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
         .anyRequest().authenticated();
 
-    httpSecurity.formLogin().loginPage("/login").loginProcessingUrl("/login")
-        .usernameParameter("emailAddress").passwordParameter("password")
-        .defaultSuccessUrl("/", true).failureUrl("/login?error").permitAll().and().logout()
-        .logoutUrl("/logout").logoutSuccessUrl("/login?logout").and().httpBasic();
+      httpSecurity.formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")
+              .usernameParameter("emailAddress").passwordParameter("password")
+              .defaultSuccessUrl("/", true).failureUrl("/login?error").permitAll()).logout(logout -> logout
+              .logoutUrl("/logout").logoutSuccessUrl("/login?logout")).httpBasic(withDefaults());
 
     // Remove the following if migrating from H2
     httpSecurity.csrf().disable().headers().frameOptions().disable();
