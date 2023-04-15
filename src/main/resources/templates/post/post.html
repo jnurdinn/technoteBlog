@@ -41,8 +41,8 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800" th:text="${post.title}">Post
-							Title</h1>
+						<h1 class="h3 mb-0 text-gray-800" th:text="${post.title}">
+						</h1>
 						<div>
 							<a sec:authorize="hasAuthority('ROLE_ADMIN')"
 								th:href="@{'/posts/'} + ${post.id} + '/edit'"
@@ -56,15 +56,22 @@
 						</div>
 					</div>
 					<div class="align-items-center justify-content-between mb-4">
-						<p th:if="${post.updatedAt == null}"
-							th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
-							Info Unedited</p>
-						<p th:unless="${post.updatedAt == null}"
-							th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
-							Info Edited</p>
-						<div th:utext="${post.body}">Formatted Body Text</div>
+												<!-- Content Row -->
+												<div class="card shadow">
+													<!-- Card Body -->
+													<div class="card-body">
+														<div th:utext="${post.body}">Formatted Body Text</div>
+													</div>
+													<div class="ml-3">
+														<p th:if="${post.updatedAt == null}"
+														th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+														Info Unedited</p>
+														<p th:unless="${post.updatedAt == null}"
+														th:text="'Posted by ' + ${post.account.firstname} + ' on ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} + ', lastly edited on ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')} + '.'">Post
+														Info Edited</p>
+													</div>
+												</div>
 					</div>
-
 				</div>
 				<!-- /.container-fluid -->
 
