@@ -1,6 +1,8 @@
 package com.colonelkatsu.techNotes.models;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.TableGenerator;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +23,17 @@ import lombok.Setter;
 @Setter
 public class Post {
 
+  //  @Id
+  // @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  // private Long id;
+
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(generator = "sequence-generator")
+  @GenericGenerator(name = "sequence-generator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
+      @Parameter(name = "sequence_name", value = "post_sequence"),
+      @Parameter(name = "initial_value", value = "5000"),
+      @Parameter(name = "increment_size", value = "1")
+  })
   private Long id;
 
   private String title;
@@ -36,7 +52,7 @@ public class Post {
   @Override
   public String toString() {
     return "Post{" +
-        "id='" + id + "'" +
+        "postId='" + id + "'" +
         "title='" + title + "'" +
         "createdAt='" + createdAt + "'" +
         "updatedAt='" + updatedAt + "'" +
