@@ -8,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.colonelkatsu.techNotes.controllers.HomeController;
 import com.colonelkatsu.techNotes.controllers.LoginController;
 import com.colonelkatsu.techNotes.controllers.PostController;
-import com.colonelkatsu.techNotes.controllers.RegisterController;
+import com.colonelkatsu.techNotes.controllers.StaticController;
+import com.colonelkatsu.techNotes.controllers.AdminController;
 
 @SpringBootTest
 public class ControllerSmokeTest {
@@ -17,7 +18,7 @@ public class ControllerSmokeTest {
   private HomeController homeController;
 
   @Autowired
-  private RegisterController registerController;
+  private AdminController adminController;
 
   @Autowired
   private LoginController loginController;
@@ -25,12 +26,16 @@ public class ControllerSmokeTest {
   @Autowired
   private PostController postController;
 
+  @Autowired
+  private StaticController staticController;
+
   @Test
   public void smokeTest() throws Exception {
     assertThat(homeController).isNotNull();
-    assertThat(registerController).isNotNull();
+    assertThat(adminController).isNotNull();
     assertThat(loginController).isNotNull();
     assertThat(postController).isNotNull();
+    assertThat(staticController).isNotNull();
   }
 
 
