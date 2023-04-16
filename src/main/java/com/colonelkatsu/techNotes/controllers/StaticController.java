@@ -1,9 +1,6 @@
 package com.colonelkatsu.techNotes.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,15 +32,6 @@ public class StaticController {
   public String registerNewUser(@ModelAttribute Message message) {
     messageService.save(message);
     return("redirect:/");
-  }
-
-  @GetMapping("/messages")
-  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-  public String messages(Model model) {
-    
-    List<Message> messages = messageService.getAll();
-    model.addAttribute("messages", messages);
-    return("static/messages");
   }
 
 }

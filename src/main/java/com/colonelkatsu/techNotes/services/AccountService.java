@@ -40,4 +40,8 @@ public class AccountService {
     return accountRepository.findById(id);
   }
 
+  public void delete(Account account) {
+    accountRepository.delete(account);
+  }
+
 }
