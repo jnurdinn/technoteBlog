@@ -186,6 +186,12 @@
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
 								<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+									<h6 class="dropdown-header">Messages</h6>
+									<a class="dropdown-item" href="/messages"> <i
+											class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i>
+										Incoming Messages
+									</a>
+									<div class="dropdown-divider"></div>
 									<h6 class="dropdown-header">Admin Control</h6>
 									<a class="dropdown-item" href="/register"> <i
 											class="fas fa-user-plus fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -267,11 +273,19 @@
 
 	<!-- SimpleMD JavaScript-->
 	<div th:fragment="simpleMDJs">
-		<!-- SimpleMDE Javascript-->
 		<script th:src="@{/vendor/simplemde-markdown-editor/simplemde.min.js}"></script>
 		<script>
 			var simplemde = new SimpleMDE({ element: document.getElementById("new-post-body") });
 		</script>
+	</div>
+
+	<!-- Table JavaScript-->
+	<div th:fragment="tableJs">
+		<!-- Page level plugins -->
+		<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+		<!-- Page level custom scripts -->
+		<script th:src="@{/js/demo/datatables-demo.js}"></script>
 	</div>
 
 </body>

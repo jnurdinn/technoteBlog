@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Comment {
+public class Message {
     
     @Id
     @GeneratedValue(generator = "sequence-generator")
@@ -34,7 +34,7 @@ public class Comment {
 
     private String emailAddress;
 
-    private String message;
+    private String messageBody;
 
     private LocalDateTime createdAt;
 }
