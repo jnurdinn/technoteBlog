@@ -34,7 +34,7 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{/contact}" th:object="${comment}" method="POST">
+					<form action="#" th:action="@{/contact}" th:object="${message}" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800">Contact</h1>
@@ -71,9 +71,9 @@
 									</div>
 									<br>
 									<div>
-										<label for="message">Email Address</label> <br> <textarea id="message"
-											type="text" th:field="*{message}" class="form-control"
-											placeholder="Your message" required />
+										<label for="messageBody">Message Body</label> <br> <textarea id="messageBody"
+											type="text" th:field="*{messageBody}" class="form-control"
+											placeholder="Drop your message here..." required />
 									</div>
 								</div>
 							</div>
