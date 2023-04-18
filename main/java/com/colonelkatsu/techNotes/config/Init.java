@@ -12,9 +12,10 @@ import com.colonelkatsu.techNotes.models.Post;
 import com.colonelkatsu.techNotes.repositories.AuthorityRepository;
 import com.colonelkatsu.techNotes.services.AccountService;
 import com.colonelkatsu.techNotes.services.PostService;
+import com.colonelkatsu.techNotes.services.UploadService;
 
 @Component
-public class SeedData implements CommandLineRunner {
+public class Init implements CommandLineRunner {
 
   @Autowired
   private PostService postService;
@@ -24,6 +25,9 @@ public class SeedData implements CommandLineRunner {
 
   @Autowired
   private AuthorityRepository authorityRepository;
+
+  @Autowired
+  private UploadService uploadService;
 
   @Override
   public void run(String... args) throws Exception {
@@ -52,6 +56,8 @@ public class SeedData implements CommandLineRunner {
       adminAccount.setAuthorities(adminAuthorities);
 
       accountService.save(adminAccount);
+      
+      uploadService.init();
     }
   }
 

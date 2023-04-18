@@ -10,10 +10,12 @@ import java.util.stream.Stream;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-public class ImageStorageService {
+@Service
+public class UploadService {
     private final Path root = Paths.get("./uploads");
 
     public void init(){
@@ -53,6 +55,16 @@ public class ImageStorageService {
     public void deleteAll(){
         FileSystemUtils.deleteRecursively(root.toFile());
     }
+
+    public boolean delete(String filename) {
+        try {
+          Path file = root.resolve(filename);
+          return Files.deleteIfExists(file);
+        } catch (IOException e) {
+          throw new RuntimeException("Error: " + e.getMessage());
+        }
+      }    
+
 
     public Stream<Path> loadAll(){
         try {

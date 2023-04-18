@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
+
+	<title>TechNote :: Uploaded Images</title>
+
+	<!-- Custom fonts for this template-->
+	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template-->
+	<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<div id="wrapper">
+		<ul th:replace="common/common.html :: sidebar"></ul>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav th:replace="common/common.html :: topbar"></nav>
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- Page Heading -->
+					<div class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Uploaded Images</h1>
+						<a href="/uploads/new" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+							<i class="fas fa-upload"></i> Upload Image
+						</a>
+					</div>
+					<div class="align-items-center justify-content-between mb-4">
+						<!-- Content Row -->
+						<div class="card shadow">
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="table-responsive">
+									<table th:if="${images.size() > 0}" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th>Image</th>
+												<th>File Name</th>
+												<th>Link</th>
+												<th>Uploaded At</th>
+												<th>Del.</th>
+											</tr>
+										</thead>
+										<tbody>
+											<div th:each="image : ${images}">
+												<tr>
+													<td><img th:src="@{${image.url}}" alt="${image.name}"
+															height="60px" /></td>
+													<td>[[${image.name}]]</td>
+													<td><a th:href="@{${image.url}}">Download</a></td>
+													<td
+														th:text="${#temporals.format(image.uploadedAt, 'yyyy-MM-dd HH:mm:ss')}">
+														uploadedAt</td>
+													<td>
+														<a th:href="@{'/uploads/delete/' + ${image.name}}" th:fileName="${file.name}"
+															class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+															<i class="fas fa-times fa-sm"></i>
+														</a>
+													</td>
+												</tr>
+											</div>
+										</tbody>
+									</table>
+									<div th:unless="${images.size() > 0}">
+										<span>No image found!</span>
+									  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer th:replace="common/common.html :: footer"></footer>
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+
+	<div th:replace="common/common.html :: logoutModal"></div>
+
+	<div th:replace="common/common.html :: javaScript"></div>
+
+	<div th:replace="common/common.html :: tableJs"></div>
+</body>
+
+</html>
