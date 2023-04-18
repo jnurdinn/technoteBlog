@@ -61,7 +61,7 @@ public class UploadController {
                     .fromMethodName(UploadController.class, "getImage", path.getFileName().toString()).build()
                     .toString();
 
-            return new Image(filename, url);
+            return new Image(filename, url, LocalDateTime.now());
         }).collect(Collectors.toList());
 
         model.addAttribute("images", images);
