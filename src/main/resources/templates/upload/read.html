@@ -41,34 +41,34 @@
 							<i class="fas fa-upload"></i> Upload Image
 						</a>
 					</div>
+					<nav th:replace="common/common.html :: messageBar"></nav>
 					<div class="align-items-center justify-content-between mb-4">
 						<!-- Content Row -->
 						<div class="card shadow">
 							<!-- Card Body -->
 							<div class="card-body">
 								<div class="table-responsive">
-									<table th:if="${images.size() > 0}" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<table th:if="${images.size() > 0}" class="table table-bordered" id="dataTable"
+										width="100%" cellspacing="0">
 										<thead>
 											<tr>
 												<th>Image</th>
 												<th>File Name</th>
 												<th>Link</th>
-												<th>Uploaded At</th>
 												<th>Del.</th>
 											</tr>
 										</thead>
 										<tbody>
 											<div th:each="image : ${images}">
 												<tr>
-													<td><img th:src="@{${image.url}}" alt="${image.name}"
-															height="60px" /></td>
-													<td>[[${image.name}]]</td>
-													<td><a th:href="@{${image.url}}">Download</a></td>
-													<td
-														th:text="${#temporals.format(image.uploadedAt, 'yyyy-MM-dd HH:mm:ss')}">
-														uploadedAt</td>
+													<td><img th:src="@{${image.url}}" height="60px" /></td>
+													<td>[[${image.filename}]]</td>
 													<td>
-														<a th:href="@{'/uploads/delete/' + ${image.name}}" th:fileName="${file.name}"
+														<a th:href="@{${image.url}}" th:text="@{${image.url}}">Download</a>
+													</td>
+													<td>
+														<a th:href="@{'/uploads/delete/' + ${image.filename}}"
+															th:fileName="${image.filename}"
 															class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 															<i class="fas fa-times fa-sm"></i>
 														</a>
@@ -79,7 +79,7 @@
 									</table>
 									<div th:unless="${images.size() > 0}">
 										<span>No image found!</span>
-									  </div>
+									</div>
 								</div>
 							</div>
 						</div>

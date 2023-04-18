@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
 
-<title>TechNote :: Create Post</title>
+	<title>TechNote :: Create Post</title>
 
-<!-- Custom fonts for this template-->
-<link th:href="@{/vendor/fontawesome-free/css/all.min.css}"
-	rel="stylesheet" type="text/css">
-<link th:href="@{/css/font.css}" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font.css}" rel="stylesheet">
 
-<!-- Custom styles for this template-->
-<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
-<link th:href="@{/css/simplemde.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template-->
+	<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+	<link th:href="@{/css/simplemde.min.css}" rel="stylesheet">
 
 </head>
 
@@ -38,45 +35,42 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{/posts/new}" th:object="${post}"
-							method="POST">
-					<!-- Page Heading -->
-					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Create New Post</h1>
-						<div>
-							<button type="submit"
-								class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-								<i class="fas fa-save fa-sm"></i> Publish Post
-							</button>
-							<a href='/'
-								class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-								<i class="fas fa-times fa-sm"></i> Cancel
-							</a>
+					<form action="#" th:action="@{/posts/new}" th:object="${post}" method="POST">
+						<!-- Page Heading -->
+						<div class="d-sm-flex align-items-center justify-content-between mb-4">
+							<h1 class="h3 mb-0 text-gray-800">Create New Post</h1>
+							<div>
+								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+									<i class="fas fa-save fa-sm"></i> Publish Post
+								</button>
+								<a href='/' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+									<i class="fas fa-times fa-sm"></i> Cancel
+								</a>
+							</div>
 						</div>
-					</div>
-					<div class="align-items-center justify-content-between mb-4">
+						<div class="align-items-center justify-content-between mb-4">
+							<nav th:replace="common/common.html :: messageBar"></nav>
 							<!-- Content Row -->
 							<div class="card shadow">
 								<!-- Card Body -->
 								<div class="card-body">
-									<input type="hidden" th:field="*{account}" /> <input
-								type="hidden" th:field="*{createdAt}" />
-							<div>
-								<label for="new-post-title">Title</label> <br> <input
-									id="new-post-title" type="text" th:field="*{title}"
-									class="form-control" placeholder="Title" autocomplete="off" required />
-							</div>
-							<br>
-							<div>
-								<label for="new-post-body">Body</label> <br>
-								<textarea type="text" id="new-post-body" class="form-control"
-									th:field="*{body}" placeholder="What is in your mind?" autocomplete="off"></textarea>
-							</div>
+									<input type="hidden" th:field="*{account}" /> <input type="hidden"
+										th:field="*{createdAt}" />
+									<div>
+										<label for="new-post-title">Title</label> <br> <input id="new-post-title"
+											type="text" th:field="*{title}" class="form-control" placeholder="Title"
+											autocomplete="off" required />
+									</div>
+									<br>
+									<div>
+										<label for="new-post-body">Body</label> <br>
+										<textarea type="text" id="new-post-body" class="form-control" th:field="*{body}"
+											placeholder="What is in your mind?" autocomplete="off"></textarea>
+									</div>
 								</div>
 							</div>
-				</div>
-			</form>
+						</div>
+					</form>
 				</div>
 
 			</div>

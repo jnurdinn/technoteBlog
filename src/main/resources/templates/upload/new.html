@@ -35,7 +35,7 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form id="uploadForm" th:action="@{/upload/new}" enctype="multipart/form-data" method="POST">
+					<form id="uploadForm" th:action="@{/uploads/new}" enctype="multipart/form-data" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800">Upload New Image</h1>
@@ -54,21 +54,14 @@
 								<!-- Card Body -->
 								<div class="card-body">
 									<div>
-										<label for="upload-title">Image</label> <br> <input id="upload-title"
-											type="file" accept="image/png, image/jpeg" required />
+										<label for="upload-title">Image</label> <br> <input id="input-file"
+											name="file" type="file" accept="image/png, image/jpeg" required />
 									</div>
 								</div>
 							</div>
 						</div>
 					</form>
-
-					<div th:if="${message != null}"
-						class="alert alert-secondary alert-dismissible fade show text-center message mt-3" role="alert">
-						[[${message}]]
-						<button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
+					<div th:replace="common/common.html :: messageBar"></div>
 				</div>
 			</div>
 			<!-- End of Main Content -->

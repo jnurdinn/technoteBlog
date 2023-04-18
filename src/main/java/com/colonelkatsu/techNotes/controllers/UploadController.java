@@ -1,8 +1,6 @@
 package com.colonelkatsu.techNotes.controllers;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.core.io.Resource;
@@ -38,18 +36,19 @@ public class UploadController {
 
     @PostMapping("/uploads/new")
     @PreAuthorize("isAuthenticated()")
-    public String submitNewUpload(Model model, @RequestParam("file") MultipartFile file) {
+    public String submitNewUpload(Model model, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         String message = "";
 
         try {
             uploadService.save(file);
             message = "Image uploaded successfully: " + file.getOriginalFilename();
+            redirectAttributes.addFlashAttribute("message", message);
+            return "redirect:/uploads";
+
         } catch (Exception e) {
             message = "Unable to upload image: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
+            return "upload/new";
         }
-
-        model.addAttribute("message", message);
-        return "upload/new";
     }
 
     @GetMapping("/uploads")
@@ -61,7 +60,7 @@ public class UploadController {
                     .fromMethodName(UploadController.class, "getImage", path.getFileName().toString()).build()
                     .toString();
 
-            return new Image(filename, url, LocalDateTime.now());
+            return new Image(filename, url);
         }).collect(Collectors.toList());
 
         model.addAttribute("images", images);

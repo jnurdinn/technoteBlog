@@ -34,4 +34,9 @@ public class StaticController {
     return("redirect:/");
   }
 
+  @GetMapping("/markdown-guide")
+  public String markdownGuide(Model model) {
+    return("static/markdown-guide");
+  }
+
 }
