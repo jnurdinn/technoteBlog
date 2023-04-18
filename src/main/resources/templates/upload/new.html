@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="">
 
-	<title>TechNote :: Register New Account</title>
+	<title>TechNote :: Upload Image</title>
 
 	<!-- Custom fonts for this template-->
 	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -16,6 +16,7 @@
 
 	<!-- Custom styles for this template-->
 	<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+	<link th:href="@{/css/simplemde.min.css}" rel="stylesheet">
 
 </head>
 
@@ -34,13 +35,13 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{/register}" th:object="${registerAccount}" method="POST">
+					<form id="uploadForm" th:action="@{/uploads/new}" enctype="multipart/form-data" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
-							<h1 class="h3 mb-0 text-gray-800">Register New Account</h1>
+							<h1 class="h3 mb-0 text-gray-800">Upload New Image</h1>
 							<div>
 								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-									<i class="fas fa-user-plus"></i> Register Account
+									<i class="fas fa-upload fa-sm"></i> Upload
 								</button>
 								<a href='/' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 									<i class="fas fa-times fa-sm"></i> Cancel
@@ -48,45 +49,20 @@
 							</div>
 						</div>
 						<div class="align-items-center justify-content-between mb-4">
-							<nav th:replace="common/common.html :: messageBar"></nav>
 							<!-- Content Row -->
 							<div class="card shadow">
 								<!-- Card Body -->
 								<div class="card-body">
 									<div>
-										<label for="firstname">First Name</label> <br> <input id="firstname" type="text"
-											th:field="*{firstname}" class="form-control" placeholder="First Name"
-											required />
-									</div>
-									<br>
-									<div>
-										<label for="lastname">Last Name</label> <br> <input id="lastname" type="text"
-											th:field="*{lastname}" class="form-control" placeholder="Last Name"
-											required />
-									</div>
-									<br>
-									<div>
-										<label for="emailAddress">Email Address</label> <br> <input id="mailAddress"
-											type="email" th:field="*{emailAddress}" class="form-control"
-											placeholder="Email Address" required />
-									</div>
-									<br>
-									<div>
-										<label for="password">Password</label> <br> <input id="password" type="password"
-											th:field="*{password}" class="form-control" placeholder="Password"
-											required />
-									</div>
-									<br>
-									<label for="roles">Roles</label>
-									<div class="checkbox">
-										<label><input type="checkbox" th:field="*{adminRole}"> Apply Admin Role</label>
+										<label for="upload-title">Image</label> <br> <input id="input-file"
+											name="file" type="file" accept="image/png, image/jpeg" required />
 									</div>
 								</div>
 							</div>
 						</div>
 					</form>
+					<div th:replace="common/common.html :: messageBar"></div>
 				</div>
-
 			</div>
 			<!-- End of Main Content -->
 

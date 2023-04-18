@@ -25,10 +25,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Account {
 
-  // @Id
-  // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  // private Long id;
-
   @Id
   @GeneratedValue(generator = "sequence-generator")
   @GenericGenerator(name = "sequence-generator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {

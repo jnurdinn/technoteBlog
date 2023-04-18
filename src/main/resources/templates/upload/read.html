@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="">
 
-	<title>TechNote :: Messages</title>
+	<title>TechNote :: Uploaded Images</title>
 
 	<!-- Custom fonts for this template-->
 	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -36,41 +36,50 @@
 				<div class="container-fluid">
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Incoming Comments</h1>
+						<h1 class="h3 mb-0 text-gray-800">Uploaded Images</h1>
+						<a href="/uploads/new" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+							<i class="fas fa-upload"></i> Upload Image
+						</a>
 					</div>
+					<nav th:replace="common/common.html :: messageBar"></nav>
 					<div class="align-items-center justify-content-between mb-4">
-						<nav th:replace="common/common.html :: messageBar"></nav>
 						<!-- Content Row -->
 						<div class="card shadow">
 							<!-- Card Body -->
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<table th:if="${images.size() > 0}" class="table table-bordered" id="dataTable"
+										width="100%" cellspacing="0">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email Address</th>
-												<th>Message Body</th>
-												<th>Sent At</th>
+												<th>Image</th>
+												<th>File Name</th>
+												<th>Link</th>
+												<th>Del.</th>
 											</tr>
 										</thead>
 										<tbody>
-											<div th:each="message : ${messages}">
+											<div th:each="image : ${images}">
 												<tr>
-													<td th:text="${message.id}">id</td>
-													<td th:text="${message.firstname}">firstname</td>
-													<td th:text="${message.lastname}">lastname</td>
-													<td th:text="${message.emailAddress}">emailAddress</td>
-													<td th:text="${message.messageBody}">messageBody</td>
-													<td
-														th:text="${#temporals.format(message.createdAt, 'yyyy-MM-dd HH:mm:ss')}">
-														createdAt</td>
+													<td><img th:src="@{${image.url}}" height="60px" /></td>
+													<td>[[${image.filename}]]</td>
+													<td>
+														<a th:href="@{${image.url}}" th:text="@{${image.url}}">Download</a>
+													</td>
+													<td>
+														<a th:href="@{'/uploads/delete/' + ${image.filename}}"
+															th:fileName="${image.filename}"
+															class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+															<i class="fas fa-times fa-sm"></i>
+														</a>
+													</td>
 												</tr>
 											</div>
 										</tbody>
 									</table>
+									<div th:unless="${images.size() > 0}">
+										<span>No image found!</span>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="">
 
-	<title>TechNote :: Edit Post</title>
+	<title>TechNote :: Create Post</title>
 
 	<!-- Custom fonts for this template-->
 	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -35,22 +35,21 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{'/posts/{id}'(id=${post.id})}" th:object="${post}" method="POST">
+					<form action="#" th:action="@{/posts/new}" th:object="${post}" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
-							<h1 class="h3 mb-0 text-gray-800">Edit Post</h1>
+							<h1 class="h3 mb-0 text-gray-800">Create New Post</h1>
 							<div>
 								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-									<i class="fas fa-save fa-sm"></i> Update Post
+									<i class="fas fa-save fa-sm"></i> Publish Post
 								</button>
-								<a th:href="@{'/posts/{id}'(id=${post.id})}"
-									class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+								<a href='/' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 									<i class="fas fa-times fa-sm"></i> Cancel
 								</a>
 							</div>
 						</div>
 						<div class="align-items-center justify-content-between mb-4">
-
+							<nav th:replace="common/common.html :: messageBar"></nav>
 							<!-- Content Row -->
 							<div class="card shadow">
 								<!-- Card Body -->
@@ -58,9 +57,9 @@
 									<input type="hidden" th:field="*{account}" /> <input type="hidden"
 										th:field="*{createdAt}" />
 									<div>
-										<label for="edit-post-title">Title</label> <br> <input id="edit-post-title"
+										<label for="new-post-title">Title</label> <br> <input id="new-post-title"
 											type="text" th:field="*{title}" class="form-control" placeholder="Title"
-											required />
+											autocomplete="off" required />
 									</div>
 									<br>
 									<div>
@@ -68,9 +67,6 @@
 										<textarea type="text" id="new-post-body" class="form-control" th:field="*{body}"
 											placeholder="What is in your mind?" autocomplete="off"></textarea>
 									</div>
-
-
-
 								</div>
 							</div>
 						</div>

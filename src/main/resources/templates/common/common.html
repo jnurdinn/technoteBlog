@@ -192,6 +192,12 @@
 										Incoming Messages
 									</a>
 									<div class="dropdown-divider"></div>
+									<h6 class="dropdown-header">Images</h6>
+									<a class="dropdown-item" href="/uploads"> <i
+											class="fas fa-image fa-sm fa-fw mr-2 text-gray-400"></i>
+										Uploaded Images
+									</a>
+									<div class="dropdown-divider"></div>
 									<h6 class="dropdown-header">Admin Control</h6>
 									<a class="dropdown-item" href="/register"> <i
 											class="fas fa-user-plus fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -218,6 +224,14 @@
 				<!-- Begin Page Content, different for each template file -->
 				<div class="container-fluid"></div>
 				<!-- /.container-fluid -->
+
+				<div th:fragment="messageBar" th:if="${message != null}"
+					class="alert alert-secondary alert-dismissible fade show text-center message mt-3" role="alert">
+					[[${message}]]
+					<button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
 
 			</div>
 			<!-- End of Main Content -->

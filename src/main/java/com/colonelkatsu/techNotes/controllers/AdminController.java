@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.colonelkatsu.techNotes.models.Account;
 import com.colonelkatsu.techNotes.models.Authority;
 import com.colonelkatsu.techNotes.models.Message;
@@ -43,7 +45,13 @@ public class AdminController {
 
   @PostMapping("/register")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-  public String registerNewUser(@ModelAttribute RegisterAccount registerAccount) {
+  public String registerNewUser(@ModelAttribute RegisterAccount registerAccount, RedirectAttributes redirectAttributes) {
+    
+    if(accountService.findByEmailAddress(registerAccount.getEmailAddress()).isPresent()){
+      redirectAttributes.addFlashAttribute("message", "Account already exists: " + registerAccount.getEmailAddress());
+      return("redirect:/register");
+    }
+
     Account account = new Account();
 
     account.setFirstname(registerAccount.getFirstname());
@@ -60,6 +68,8 @@ public class AdminController {
     account.setAuthorities(authorities);
 
     accountService.save(account);
+
+    redirectAttributes.addFlashAttribute("message", "Account created successfully: " + account.getEmailAddress());
 
     return("redirect:/accounts");
   }
