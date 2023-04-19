@@ -55,7 +55,11 @@
 									<div
 										class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 										<h6 class="m-0 font-weight-bold text-primary">
-											<a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"> Post Title
+											<a th:href="@{'/posts/' + ${post.id}}">
+												<i th:if="${post.category == 'cloud'}" class="fas fa-cloud"></i>
+												<i th:if="${post.category == 'dev'}" class="fas fa-code"></i>
+												<i th:if="${post.category == 'misc'}" class="fas fa-border-all"></i>												
+												<span th:text="${post.title}"></span>
 											</a>
 										</h6>
 										<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="dropdown no-arrow">
@@ -71,7 +75,6 @@
 													th:attr="data-target='#deleteModal' + ${post.id}"> <i
 														class="fas fa-trash-alt"></i> Delete Post
 												</a>
-
 											</div>
 										</div>
 									</div>

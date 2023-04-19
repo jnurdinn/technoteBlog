@@ -37,7 +37,11 @@
 
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800" th:text="${post.title}">
+						<h1 class="h3 mb-0 text-gray-800">
+							<i th:if="${post.category == 'cloud'}" class="fas fa-cloud"></i>
+							<i th:if="${post.category == 'dev'}" class="fas fa-code"></i>
+							<i th:if="${post.category == 'misc'}" class="fas fa-border-all"></i>
+							<span th:text="${post.title}"></span>
 						</h1>
 						<div>
 							<a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/posts/'} + ${post.id} + '/edit'"

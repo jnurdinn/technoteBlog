@@ -99,6 +99,7 @@ public class PostController {
       existingPost.setTitle(post.getTitle());
       existingPost.setBody(post.getBody());
       existingPost.setUpdatedAt(LocalDateTime.now());
+      existingPost.setCategory(post.getCategory());
 
       postService.save(existingPost);
 
