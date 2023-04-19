@@ -34,6 +34,8 @@ public class Post {
   @Column(columnDefinition = "TEXT")
   private String body;
 
+  private String category;
+
   private LocalDateTime createdAt;
 
   private LocalDateTime updatedAt;

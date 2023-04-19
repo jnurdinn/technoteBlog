@@ -34,3 +34,9 @@ build/
 
 ### technotedb.trace ###
 *.db
+
+### ds store (from mac) ###
+.DS_Store
+
+### Images from uploads folder ###
+/uploads/

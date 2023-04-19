@@ -9,6 +9,7 @@ import com.colonelkatsu.techNotes.controllers.HomeController;
 import com.colonelkatsu.techNotes.controllers.LoginController;
 import com.colonelkatsu.techNotes.controllers.PostController;
 import com.colonelkatsu.techNotes.controllers.StaticController;
+import com.colonelkatsu.techNotes.controllers.UploadController;
 import com.colonelkatsu.techNotes.controllers.AdminController;
 
 @SpringBootTest
@@ -29,6 +30,9 @@ public class ControllerSmokeTest {
   @Autowired
   private StaticController staticController;
 
+  @Autowired
+  private UploadController uploadController;
+
   @Test
   public void smokeTest() throws Exception {
     assertThat(homeController).isNotNull();
@@ -36,6 +40,7 @@ public class ControllerSmokeTest {
     assertThat(loginController).isNotNull();
     assertThat(postController).isNotNull();
     assertThat(staticController).isNotNull();
+    assertThat(uploadController).isNotNull();
   }
 
 
