@@ -44,7 +44,7 @@
 							<span th:text="${post.title}"></span>
 						</h1>
 						<div>
-							<a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/posts/'} + ${post.id} + '/edit'"
+							<a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/posts/id/'} + ${post.id} + '/edit'"
 								class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
 								<i class="fas fa-edit fa-sm"></i> Edit Post
 							</a> <a sec:authorize="hasAuthority('ROLE_ADMIN')" data-target="#deleteModal"
@@ -107,7 +107,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" th:href="@{'/posts/'} + ${post.id} + '/delete'">Delete Post!</a>
+					<a class="btn btn-danger" th:href="@{'/posts/id/'} + ${post.id} + '/delete'">Delete Post!</a>
 				</div>
 			</div>
 		</div>

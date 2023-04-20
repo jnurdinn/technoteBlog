@@ -35,7 +35,7 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{'/posts/{id}'(id=${post.id})}" th:object="${post}" method="POST">
+					<form action="#" th:action="@{'/posts/id/{id}'(id=${post.id})}" th:object="${post}" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800">Edit Post</h1>
@@ -43,7 +43,7 @@
 								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
 									<i class="fas fa-save fa-sm"></i> Update Post
 								</button>
-								<a th:href="@{'/posts/{id}'(id=${post.id})}"
+								<a th:href="@{'/posts/id/{id}'(id=${post.id})}"
 									class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 									<i class="fas fa-times fa-sm"></i> Cancel
 								</a>

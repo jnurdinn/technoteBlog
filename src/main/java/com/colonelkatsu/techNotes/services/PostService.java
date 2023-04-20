@@ -51,6 +51,28 @@ public class PostService {
     return allPosts;
   }
 
+  public List<Post> getByCategoryForRender(String category){
+    List<Post> selectedPosts = postRepository.findByCategory(category);
+
+    if (selectedPosts.isEmpty()) {
+      return List.of();
+    }
+
+    for (int i = 0; i < selectedPosts.size(); i++) {
+
+      String bodyPost = CommonUtil.markdownToHtml(selectedPosts.get(i).getBody());
+      int maxChar = CommonConstant.homePostLimiter;
+
+      if (bodyPost.length() > maxChar) {    
+        bodyPost = bodyPost.substring(0, maxChar) + "...";
+      }
+
+      selectedPosts.get(i).setBody(bodyPost);
+
+    }
+    return selectedPosts;
+  }
+
   public Post save(Post post) {
     if (post.getId() == null) {
       post.setCreatedAt(LocalDateTime.now());

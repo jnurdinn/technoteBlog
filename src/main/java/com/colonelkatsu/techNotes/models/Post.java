@@ -49,6 +49,7 @@ public class Post {
     return "Post{" +
         "postId='" + id + "'" +
         "title='" + title + "'" +
+        "category='" + category + "'" +
         "createdAt='" + createdAt + "'" +
         "updatedAt='" + updatedAt + "'" +
         "}";
