@@ -67,6 +67,27 @@
 										<textarea type="text" id="new-post-body" class="form-control" th:field="*{body}"
 											placeholder="What is in your mind?" autocomplete="off"></textarea>
 									</div>
+									<label for="roles">Post Category</label>
+									<div class="radio">
+										<div class="custom-control custom-radio custom-control-inline">
+											<input type="radio" id="is-cloud" name="is-cloud"
+												class="custom-control-input" value="cloud" th:field="*{category}" required>
+											<label class="custom-control-label" for="is-cloud">
+												<i class="fas fa-cloud"></i> Cloud</label>
+										</div>
+										<div class="custom-control custom-radio custom-control-inline">
+											<input type="radio" id="is-dev" name="is-dev" class="custom-control-input"
+												value="dev" th:field="*{category}">
+											<label class="custom-control-label" for="is-dev">
+												<i class="fas fa-code"></i> Development</label>
+										</div>
+										<div class="custom-control custom-radio custom-control-inline">
+											<input type="radio" id="is-misc" name="is-misc" class="custom-control-input"
+												value="misc" th:field="*{category}">
+											<label class="custom-control-label" for="is-misc">
+												<i class="fas fa-border-all"></i> Miscellaneous</label>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

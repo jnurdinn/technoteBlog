@@ -15,7 +15,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
 
-  private static final String[] WHITELIST = {"/", "/contact", "/**/*.{js,html,css,svg,png}"};
+  private static final String[] WHITELIST = {"/", "/posts/", "/category/*", "/about-us", "/contact", "/**/*.{js,html,css,svg,png}"};
 
   @Bean
   static PasswordEncoder passwordEncoder() {
@@ -26,7 +26,7 @@ public class SecurityConfig {
   SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.authorizeHttpRequests()
         .antMatchers(WHITELIST).permitAll()
-        .antMatchers(HttpMethod.GET, "/posts/*").permitAll()
+        .antMatchers(HttpMethod.GET, "/posts/id/*").permitAll()
         .anyRequest().authenticated();
 
       httpSecurity.formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login")

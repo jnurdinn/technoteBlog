@@ -2,6 +2,7 @@ package com.colonelkatsu.techNotes.controllers;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +27,7 @@ public class PostController {
   @Autowired
   private AccountService accountService;
 
-  @GetMapping("/posts/{id}")
+  @GetMapping("/posts/id/{id}")
   public String getPost(@PathVariable Long id, Model model) {
 
     Optional<Post> optionalPost = postService.getByIdForRender(id);
@@ -69,10 +70,10 @@ public class PostController {
     post.setCreatedAt(LocalDateTime.now());
     postService.save(post);
 
-    return("redirect:/posts/" + post.getId());
+    return("redirect:/posts/id/" + post.getId());
   }
 
-  @GetMapping("/posts/{id}/edit")
+  @GetMapping("/posts/id/{id}/edit")
   @PreAuthorize("isAuthenticated()")
   public String getExistingPost(@PathVariable Long id, Model model) {
 
@@ -87,7 +88,7 @@ public class PostController {
     return("error/404");
   }
 
-  @PostMapping("/posts/{id}")
+  @PostMapping("/posts/id/{id}")
   @PreAuthorize("isAuthenticated()")
   public String submitEditedPost(@PathVariable Long id, Post post, BindingResult result, Model model) {
 
@@ -99,16 +100,17 @@ public class PostController {
       existingPost.setTitle(post.getTitle());
       existingPost.setBody(post.getBody());
       existingPost.setUpdatedAt(LocalDateTime.now());
+      existingPost.setCategory(post.getCategory());
 
       postService.save(existingPost);
 
-      return("redirect:/posts/" + post.getId());
+      return("redirect:/posts/id/" + post.getId());
     }
 
     return("error/404");
   }
 
-  @GetMapping("/posts/{id}/delete")
+  @GetMapping("/posts/id/{id}/delete")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
   public String deletePost(@PathVariable Long id) {
 
@@ -123,6 +125,16 @@ public class PostController {
     }
 
     return("error/404");
+  }
+  
+  @GetMapping({"/category/{category}"})
+  public String categoryCloud(Model model, @PathVariable String category) {
+
+    List<Post> posts = postService.getByCategoryForRender(category);
+
+    model.addAttribute("posts", posts);
+
+    return("index");
   }
 
 }

@@ -34,6 +34,8 @@ public class Post {
   @Column(columnDefinition = "TEXT")
   private String body;
 
+  private String category;
+
   private LocalDateTime createdAt;
 
   private LocalDateTime updatedAt;
@@ -47,6 +49,7 @@ public class Post {
     return "Post{" +
         "postId='" + id + "'" +
         "title='" + title + "'" +
+        "category='" + category + "'" +
         "createdAt='" + createdAt + "'" +
         "updatedAt='" + updatedAt + "'" +
         "}";
