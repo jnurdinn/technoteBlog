@@ -10,7 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import com.colonelkatsu.techNotes.models.Account;
+
+import com.colonelkatsu.techNotes.entity.Account;
 
 @Component("userDetailsService")
 public class LoginUserDetailsService implements UserDetailsService {

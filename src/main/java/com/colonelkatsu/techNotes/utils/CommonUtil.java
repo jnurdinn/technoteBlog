@@ -2,7 +2,9 @@ package com.colonelkatsu.techNotes.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import org.springframework.stereotype.Component;
+
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;

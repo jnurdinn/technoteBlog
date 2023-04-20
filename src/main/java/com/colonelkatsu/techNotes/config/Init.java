@@ -6,9 +6,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.colonelkatsu.techNotes.models.Account;
-import com.colonelkatsu.techNotes.models.Authority;
-import com.colonelkatsu.techNotes.models.Post;
+
+import com.colonelkatsu.techNotes.entity.Account;
+import com.colonelkatsu.techNotes.entity.Authority;
+import com.colonelkatsu.techNotes.entity.Post;
 import com.colonelkatsu.techNotes.repositories.AuthorityRepository;
 import com.colonelkatsu.techNotes.services.AccountService;
 import com.colonelkatsu.techNotes.services.PostService;

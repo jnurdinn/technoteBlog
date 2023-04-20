@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.colonelkatsu.techNotes.models.Message;
+import com.colonelkatsu.techNotes.entity.Message;
 import com.colonelkatsu.techNotes.services.MessageService;
 
 @Controller

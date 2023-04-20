@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Image {
+public class ImageInfo {
 
   private String filename;
   
