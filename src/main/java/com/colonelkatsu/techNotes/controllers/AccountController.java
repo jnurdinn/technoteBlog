@@ -17,14 +17,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.colonelkatsu.techNotes.entity.Account;
 import com.colonelkatsu.techNotes.entity.Authority;
-import com.colonelkatsu.techNotes.entity.Message;
-import com.colonelkatsu.techNotes.models.RegisterInfo;
+import com.colonelkatsu.techNotes.models.AccountInfo;
 import com.colonelkatsu.techNotes.repositories.AuthorityRepository;
 import com.colonelkatsu.techNotes.services.AccountService;
-import com.colonelkatsu.techNotes.services.MessageService;
 
 @Controller
-public class AdminController {
+public class AccountController {
 
   @Autowired
   private AccountService accountService;
@@ -32,24 +30,21 @@ public class AdminController {
   @Autowired
   private AuthorityRepository authorityRepository;
 
-  @Autowired
-  private MessageService messageService;
-
-  @GetMapping("/register")
+  @GetMapping("/accounts/register")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
   public String getRegister(Model model) {
-    RegisterInfo registerAccount = new RegisterInfo();
+    AccountInfo registerAccount = new AccountInfo();
     model.addAttribute("registerAccount", registerAccount);
-    return("admin/register");
+    return("account/register");
   }
 
-  @PostMapping("/register")
+  @PostMapping("/accounts/register")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-  public String registerNewUser(@ModelAttribute RegisterInfo registerAccount, RedirectAttributes redirectAttributes) {
+  public String registerNewUser(@ModelAttribute AccountInfo registerAccount, RedirectAttributes redirectAttributes) {
     
     if(accountService.findByEmailAddress(registerAccount.getEmailAddress()).isPresent()){
       redirectAttributes.addFlashAttribute("message", "Account already exists: " + registerAccount.getEmailAddress());
-      return("redirect:/register");
+      return("redirect:/accounts/register");
     }
 
     Account account = new Account();
@@ -74,25 +69,55 @@ public class AdminController {
     return("redirect:/accounts");
   }
 
-  @GetMapping("/messages")
-  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-  public String messages(Model model) {
-    
-    List<Message> messages = messageService.getAll();
-    model.addAttribute("messages", messages);
-    return("admin/messages");
-  }
-
   @GetMapping("/accounts")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
   public String accountConfig(Model model) {
     
     List<Account> accounts = accountService.getAll();
     model.addAttribute("accounts", accounts);
-    return("admin/account-config");
+    return("account/config");
   }
 
-  @GetMapping("/accounts/{id}/delete")
+  @GetMapping("/accounts/id/{id}/edit")
+  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+  public String getEditAccount(Model model, @PathVariable Long id ){
+    
+
+    Optional<Account> optionalAccount = accountService.findById(id);
+
+    if(optionalAccount.isPresent()) {
+      Account editAccount = optionalAccount.get();
+
+      model.addAttribute("editAccount", editAccount);
+
+      return("account/edit");
+    }
+
+    return("error/404");
+  }
+
+  @PostMapping("/accounts/id/{id}/edit")
+  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+  public String submitEditAccount(@PathVariable Long id, @ModelAttribute Account editAccount, RedirectAttributes redirectAttributes) {
+
+    Optional<Account> optionalAccount = accountService.findById(id);
+    if (optionalAccount.isPresent()) {
+      Account existingAccount = optionalAccount.get();
+
+      existingAccount.setFirstname(editAccount.getFirstname());
+      existingAccount.setLastname(editAccount.getLastname());
+      existingAccount.setPassword(editAccount.getPassword());
+      accountService.save(existingAccount);
+
+      redirectAttributes.addFlashAttribute("message", "Account edited successfully: " + editAccount.getEmailAddress());
+
+      return("redirect:/accounts");
+    }
+
+    return("error/404");
+  }
+
+  @GetMapping("/accounts/id/{id}/delete")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
   public String deleteAccount(@PathVariable Long id) {
 

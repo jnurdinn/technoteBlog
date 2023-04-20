@@ -34,7 +34,7 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<form action="#" th:action="@{/register}" th:object="${registerAccount}" method="POST">
+					<form action="#" th:action="@{/accounts/register}" th:object="${registerAccount}" method="POST">
 						<!-- Page Heading -->
 						<div class="d-sm-flex align-items-center justify-content-between mb-4">
 							<h1 class="h3 mb-0 text-gray-800">Register New Account</h1>
@@ -42,7 +42,7 @@
 								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
 									<i class="fas fa-user-plus"></i> Register Account
 								</button>
-								<a href='/' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+								<a href='/accounts' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
 									<i class="fas fa-times fa-sm"></i> Cancel
 								</a>
 							</div>
