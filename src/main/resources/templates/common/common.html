@@ -57,12 +57,12 @@
 
 					<!-- Topbar Search -->
 					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" th:action="@{/search}">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+							<input name="keyword" th:value="${keyword}" id="search-bar" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
 								aria-label="Search" aria-describedby="basic-addon2">
 							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
+								<button class="btn btn-primary" type="submit">
 									<i class="fas fa-search fa-sm"></i>
 								</button>
 							</div>
@@ -79,13 +79,12 @@
 							</a> <!-- Dropdown - Messages -->
 							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
 								aria-labelledby="searchDropdown">
-								<form class="form-inline mr-auto w-100 navbar-search">
+								<form class="form-inline mr-auto w-100 navbar-search" method="GET" th:action="@{/search}">
 									<div class="input-group">
-										<input type="text" class="form-control bg-light border-0 small"
-											placeholder="Search for..." aria-label="Search"
-											aria-describedby="basic-addon2">
+										<input name="keyword" th:value="${keyword}" id="search-bar" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+											aria-label="Search" aria-describedby="basic-addon2">
 										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
+											<button class="btn btn-primary" type="submit">
 												<i class="fas fa-search fa-sm"></i>
 											</button>
 										</div>
@@ -96,9 +95,9 @@
 
 						<!-- Nav Item - Cloud Related Posts -->
 						<div class="nav-item dropdown no-arrow">
-							<a class="nav-link" href="/category/cloud" role="button"
-								aria-haspopup="true" aria-expanded="false"> <span
-									class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i class="fas fa-cloud"></i>
+							<a class="nav-link" href="/category/cloud" role="button" aria-haspopup="true"
+								aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i
+											class="fas fa-cloud"></i>
 										CLOUD</b>
 								</span>
 							</a>
@@ -106,9 +105,9 @@
 
 						<!-- Nav Item - Dev Related Posts -->
 						<div class="nav-item dropdown no-arrow">
-							<a class="nav-link" href="/category/dev" role="button"
-								aria-haspopup="true" aria-expanded="false"> <span
-									class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i class="fas fa-code"></i>
+							<a class="nav-link" href="/category/dev" role="button" aria-haspopup="true"
+								aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i
+											class="fas fa-code"></i>
 										DEV</b>
 								</span>
 							</a>
@@ -116,9 +115,8 @@
 
 						<!-- Nav Item - Misc. Information Unauthenticated -->
 						<div class="nav-item dropdown no-arrow">
-							<a class="nav-link" href="/category/misc" role="button"
-								aria-haspopup="true" aria-expanded="false"> <span
-									class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i
+							<a class="nav-link" href="/category/misc" role="button" aria-haspopup="true"
+								aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b><i
 											class="fas fa-border-all"></i> MISC.</b>
 								</span>
 							</a>

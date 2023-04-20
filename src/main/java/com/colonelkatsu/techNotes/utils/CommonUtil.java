@@ -28,4 +28,9 @@ public class CommonUtil {
     return renderer.render(document);
   }
 
+  public static String keywordQuery(String keyword){
+    //return "select * from POST p where p.TITLE like '%" + keyword + "%' or p.BODY like '%" + keyword + "%';";
+    return "select * from POST p where p.TITLE like '%post%' or p.BODY like '%post%';";
+  }
+
 }
