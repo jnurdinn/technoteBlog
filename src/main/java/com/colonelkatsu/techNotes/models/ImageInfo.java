@@ -9,6 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ImageInfo {
 
+  private Long id;
+
   private String filename;
   
   private String url;
