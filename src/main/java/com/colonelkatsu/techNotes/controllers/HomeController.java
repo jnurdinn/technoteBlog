@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.colonelkatsu.techNotes.models.Post;
+import com.colonelkatsu.techNotes.entity.Post;
 import com.colonelkatsu.techNotes.services.PostService;
 
 @Controller

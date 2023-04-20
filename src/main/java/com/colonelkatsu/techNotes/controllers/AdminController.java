@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.colonelkatsu.techNotes.models.Account;
-import com.colonelkatsu.techNotes.models.Authority;
-import com.colonelkatsu.techNotes.models.Message;
-import com.colonelkatsu.techNotes.models.RegisterAccount;
+import com.colonelkatsu.techNotes.entity.Account;
+import com.colonelkatsu.techNotes.entity.Authority;
+import com.colonelkatsu.techNotes.entity.Message;
+import com.colonelkatsu.techNotes.models.RegisterInfo;
 import com.colonelkatsu.techNotes.repositories.AuthorityRepository;
 import com.colonelkatsu.techNotes.services.AccountService;
 import com.colonelkatsu.techNotes.services.MessageService;
@@ -38,14 +38,14 @@ public class AdminController {
   @GetMapping("/register")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
   public String getRegister(Model model) {
-    RegisterAccount registerAccount = new RegisterAccount();
+    RegisterInfo registerAccount = new RegisterInfo();
     model.addAttribute("registerAccount", registerAccount);
     return("admin/register");
   }
 
   @PostMapping("/register")
   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-  public String registerNewUser(@ModelAttribute RegisterAccount registerAccount, RedirectAttributes redirectAttributes) {
+  public String registerNewUser(@ModelAttribute RegisterInfo registerAccount, RedirectAttributes redirectAttributes) {
     
     if(accountService.findByEmailAddress(registerAccount.getEmailAddress()).isPresent()){
       redirectAttributes.addFlashAttribute("message", "Account already exists: " + registerAccount.getEmailAddress());

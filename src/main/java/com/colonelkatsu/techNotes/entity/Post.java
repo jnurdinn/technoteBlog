@@ -1,4 +1,4 @@
-package com.colonelkatsu.techNotes.models;
+package com.colonelkatsu.techNotes.entity;
 
 import java.time.LocalDateTime;
 

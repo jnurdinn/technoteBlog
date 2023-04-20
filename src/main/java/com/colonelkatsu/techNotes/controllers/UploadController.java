@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.colonelkatsu.techNotes.models.Image;
+import com.colonelkatsu.techNotes.models.ImageInfo;
 import com.colonelkatsu.techNotes.services.UploadService;
 
 @Controller
@@ -54,13 +54,13 @@ public class UploadController {
     @GetMapping("/uploads")
     @PreAuthorize("isAuthenticated()")
     public String getAllImages(Model model) {
-        List<Image> images = uploadService.loadAll().map(path -> {
+        List<ImageInfo> images = uploadService.loadAll().map(path -> {
             String filename = path.getFileName().toString();
             String url = MvcUriComponentsBuilder
                     .fromMethodName(UploadController.class, "getImage", path.getFileName().toString()).build()
                     .toString();
 
-            return new Image(filename, url);
+            return new ImageInfo(filename, url);
         }).collect(Collectors.toList());
 
         model.addAttribute("images", images);

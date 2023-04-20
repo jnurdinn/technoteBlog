@@ -6,7 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.colonelkatsu.techNotes.models.Post;
+
+import com.colonelkatsu.techNotes.entity.Post;
 import com.colonelkatsu.techNotes.repositories.PostRepository;
 import com.colonelkatsu.techNotes.utils.CommonConstant;
 import com.colonelkatsu.techNotes.utils.CommonUtil;
