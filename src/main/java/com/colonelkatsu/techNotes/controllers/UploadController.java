@@ -60,9 +60,15 @@ public class UploadController {
                     .fromMethodName(UploadController.class, "getImage", path.getFileName().toString()).build()
                     .toString();
 
-            return new ImageInfo(filename, url);
+            return new ImageInfo(Long.valueOf(0), filename, url);
         }).collect(Collectors.toList());
 
+        if (images.size() > 0){
+          for(int i=0; i < images.size(); i++){
+            images.get(i).setId(Long.valueOf(i));
+          }
+        }
+        
         model.addAttribute("images", images);
 
         return "upload/read";

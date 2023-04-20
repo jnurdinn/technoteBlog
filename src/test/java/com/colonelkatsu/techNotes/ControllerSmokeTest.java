@@ -10,7 +10,7 @@ import com.colonelkatsu.techNotes.controllers.LoginController;
 import com.colonelkatsu.techNotes.controllers.PostController;
 import com.colonelkatsu.techNotes.controllers.StaticController;
 import com.colonelkatsu.techNotes.controllers.UploadController;
-import com.colonelkatsu.techNotes.controllers.AdminController;
+import com.colonelkatsu.techNotes.controllers.AccountController;
 
 @SpringBootTest
 public class ControllerSmokeTest {
@@ -19,7 +19,7 @@ public class ControllerSmokeTest {
   private HomeController homeController;
 
   @Autowired
-  private AdminController adminController;
+  private AccountController adminController;
 
   @Autowired
   private LoginController loginController;

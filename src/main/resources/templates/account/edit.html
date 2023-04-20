@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
+
+	<title>TechNote :: Edit Existing Account</title>
+
+	<!-- Custom fonts for this template-->
+	<link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template-->
+	<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<div id="wrapper">
+		<ul th:replace="common/common.html :: sidebar"></ul>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav th:replace="common/common.html :: topbar"></nav>
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<form action="#" th:action="@{'/accounts/id/{id}/edit'(id=${editAccount.id})}" th:object="${editAccount}" method="POST">
+						<!-- Page Heading -->
+						<div class="d-sm-flex align-items-center justify-content-between mb-4">
+							<h1 class="h3 mb-0 text-gray-800">Edit Existing Account</h1>
+							<div>
+								<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+									<i class="fas fa-user-cog"></i> Update Account
+								</button>
+								<a href='/accounts' class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+									<i class="fas fa-times fa-sm"></i> Cancel
+								</a>
+							</div>
+						</div>
+						<div class="align-items-center justify-content-between mb-4">
+							<nav th:replace="common/common.html :: messageBar"></nav>
+							<!-- Content Row -->
+							<div class="card shadow">
+								<!-- Card Body -->
+								<div class="card-body">
+									<div>
+										<label for="id">Account id</label> <br> <input id="id" type="text"
+											th:field="*{id}" class="form-control" placeholder="Account id"
+											readonly />
+									</div>
+									<br>
+									<div>
+										<label for="firstname">First Name</label> <br> <input id="firstname" type="text"
+											th:field="*{firstname}" class="form-control" placeholder="First Name"
+											required />
+									</div>
+									<br>
+									<div>
+										<label for="lastname">Last Name</label> <br> <input id="lastname" type="text"
+											th:field="*{lastname}" class="form-control" placeholder="Last Name"
+											required />
+									</div>
+									<br>
+									<div>
+										<label for="emailAddress">Email Address</label> <br> <input id="mailAddress"
+											type="email" th:field="*{emailAddress}" class="form-control"
+											placeholder="Email Address" readonly />
+									</div>
+									<br>
+									<div>
+										<label for="password">Password</label> <br> <input id="password" type="password"
+											th:field="*{password}" class="form-control" placeholder="Password"
+											required />
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer th:replace="common/common.html :: footer"></footer>
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+
+	<div th:replace="common/common.html :: logoutModal"></div>
+
+	<div th:replace="common/common.html :: javaScript"></div>
+</body>
+
+</html>
