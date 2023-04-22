@@ -19,7 +19,7 @@ public class ControllerSmokeTest {
   private HomeController homeController;
 
   @Autowired
-  private AccountController adminController;
+  private AccountController accountController;
 
   @Autowired
   private LoginController loginController;
@@ -36,7 +36,7 @@ public class ControllerSmokeTest {
   @Test
   public void smokeTest() throws Exception {
     assertThat(homeController).isNotNull();
-    assertThat(adminController).isNotNull();
+    assertThat(accountController).isNotNull();
     assertThat(loginController).isNotNull();
     assertThat(postController).isNotNull();
     assertThat(staticController).isNotNull();
