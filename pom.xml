@@ -14,6 +14,7 @@
 	<description>Tech notes blogging app built in Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<start-class>com.colonelkatsu.techNotes.TechNotesApplication</start-class>
 	</properties>
 	<dependencies>
 
@@ -99,6 +100,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<classifier>exec</classifier>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
