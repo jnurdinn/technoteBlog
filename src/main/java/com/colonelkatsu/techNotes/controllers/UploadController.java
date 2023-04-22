@@ -75,7 +75,6 @@ public class UploadController {
     }
 
     @GetMapping("/uploads/read/{filename:.+}")
-    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         Resource file = uploadService.load(filename);
         return ResponseEntity.ok()
