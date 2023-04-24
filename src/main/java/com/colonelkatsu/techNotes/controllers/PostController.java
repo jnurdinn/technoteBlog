@@ -127,15 +127,4 @@ public class PostController {
 
     return("error/404");
   }
-  
-  @GetMapping({"/category/{category}"})
-  public String categoryCloud(Model model, @PathVariable String category) {
-
-    List<Post> posts = postService.getByCategoryForRender(category);
-
-    model.addAttribute("posts", posts);
-
-    return("index");
-  }
-
 }
