@@ -2,7 +2,6 @@ package com.colonelkatsu.techNotes.controllers;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -127,15 +126,4 @@ public class PostController {
 
     return("error/404");
   }
-  
-  @GetMapping({"/category/{category}"})
-  public String categoryCloud(Model model, @PathVariable String category) {
-
-    List<Post> posts = postService.getByCategoryForRender(category);
-
-    model.addAttribute("posts", posts);
-
-    return("index");
-  }
-
 }
